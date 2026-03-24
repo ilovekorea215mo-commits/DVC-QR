@@ -25,7 +25,7 @@
             overflow: hidden;
         }
 
-        /* Dark overlay */
+        /* Dark overlay - REDUCED for better background visibility */
         body::before {
             content: '';
             position: fixed;
@@ -33,7 +33,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(0, 0, 0, 0.25);
             z-index: 0;
         }
 
@@ -46,9 +46,9 @@
             padding: 20px;
         }
 
-        /* Glass Container */
+        /* Glass Container - REDUCED OPACITY */
         .glass-container {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(40px) saturate(180%);
             -webkit-backdrop-filter: blur(40px) saturate(180%);
             border-radius: 30px;
@@ -218,9 +218,9 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
-        /* Language Item */
+        /* Language Item - REDUCED OPACITY & UNIFORM HEIGHT */
         .language-item {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 20px;
@@ -231,6 +231,7 @@
             gap: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
+            min-height: 68px;
         }
 
         .language-item:hover {
@@ -250,25 +251,29 @@
             flex-shrink: 0;
         }
 
-        /* Language Name */
+        /* Language Name - ENGLISH BOLD, NATIVE NORMAL */
         .language-name {
             color: white;
             font-size: 16px;
-            font-weight: 500;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             gap: 2px;
+            min-width: 0;
         }
 
         .language-name .english {
-            font-size: 15px;
-            opacity: 0.8;
+            font-size: 16px;
+            font-weight: 700;
+            opacity: 1;
+            line-height: 1.3;
         }
 
         .language-name .native {
-            font-size: 17px;
-            font-weight: 600;
+            font-size: 15px;
+            font-weight: 400;
+            opacity: 0.9;
+            line-height: 1.3;
         }
 
         /* Arrow icon */
