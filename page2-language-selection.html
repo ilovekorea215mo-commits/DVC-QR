@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Language - DVC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('images/background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dark overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 0;
+        }
+
+        /* Container - Mobile 9:16 ratio */
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 450px;
+            padding: 20px;
+        }
+
+        /* Glass Container */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border-radius: 30px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Select Language Button */
+        .select-btn {
+            width: 100%;
+            padding: 18px 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .select-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+        }
+
+        .select-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Smooth button update animation */
+        .select-btn.updating {
+            animation: smoothUpdate 0.5s ease;
+        }
+
+        @keyframes smoothUpdate {
+            0% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+            60% {
+                transform: scale(1.03);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .select-btn .selected-display {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+        }
+
+        .select-btn .selected-display .flag {
+            font-size: 28px;
+        }
+
+        /* Next Button */
+        .next-btn {
+            width: 100%;
+            padding: 18px 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50px;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+        }
+
+        .next-btn.show {
+            display: flex;
+            animation: smoothSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes smoothSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(-5px) scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .next-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .next-btn:active {
+            transform: translateY(-1px) scale(0.98);
+            transition: all 0.1s ease;
+        }
+
+        /* Language List - Hidden by default */
+        .language-list {
+            display: none;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .language-list.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scrollbar styling */
+        .language-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .language-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .language-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .language-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Language Item */
+        .language-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .language-item:active {
+            transform: translateX(3px);
+        }
+
+        /* Flag */
+        .flag {
+            font-size: 32px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        /* Language Name */
+        .language-name {
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .language-name .english {
+            font-size: 15px;
+            opacity: 0.8;
+        }
+
+        .language-name .native {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        /* Arrow icon */
+        .arrow {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .language-item:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 500px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            .glass-container {
+                padding: 30px 20px;
+            }
+
+            .select-btn {
+                font-size: 16px;
+                padding: 16px 25px;
+            }
+
+            .language-item {
+                padding: 14px 18px;
+            }
+
+            .flag {
+                font-size: 28px;
+            }
+
+            .language-name {
+                font-size: 15px;
+            }
+        }
+
+        /* Fade in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .glass-container {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glass-container">
+            <!-- Select Language Button -->
+            <button class="select-btn" id="selectBtn">
+                <span id="buttonText">Select Language</span>
+                <span id="buttonArrow">▼</span>
+            </button>
+
+            <!-- Language List -->
+            <div class="language-list" id="languageList">
+                <div class="language-item" data-lang="en" data-native="English">
+                    <span class="flag">🇺🇸</span>
+                    <span class="language-name">
+                        <span class="english">English</span>
+                        <span class="native">English</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="zh" data-native="中国">
+                    <span class="flag">🇨🇳</span>
+                    <span class="language-name">
+                        <span class="english">Chinese</span>
+                        <span class="native">中国</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="ru" data-native="Русский">
+                    <span class="flag">🇷🇺</span>
+                    <span class="language-name">
+                        <span class="english">Russian</span>
+                        <span class="native">Русский</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="uz" data-native="O'zbek">
+                    <span class="flag">🇺🇿</span>
+                    <span class="language-name">
+                        <span class="english">Uzbek</span>
+                        <span class="native">O'zbek</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="si" data-native="සිංහල">
+                    <span class="flag">🇱🇰</span>
+                    <span class="language-name">
+                        <span class="english">Sinhala</span>
+                        <span class="native">සිංහල</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="mn" data-native="Монгол">
+                    <span class="flag">🇲🇳</span>
+                    <span class="language-name">
+                        <span class="english">Mongolian</span>
+                        <span class="native">Монгол</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="vi" data-native="Tiếng Việt">
+                    <span class="flag">🇻🇳</span>
+                    <span class="language-name">
+                        <span class="english">Vietnamese</span>
+                        <span class="native">Tiếng Việt</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="th" data-native="ไทย">
+                    <span class="flag">🇹🇭</span>
+                    <span class="language-name">
+                        <span class="english">Thai</span>
+                        <span class="native">ไทย</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="kk" data-native="Қазақ">
+                    <span class="flag">🇰🇿</span>
+                    <span class="language-name">
+                        <span class="english">Kazakh</span>
+                        <span class="native">Қазақ</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="my" data-native="မြန်မာ">
+                    <span class="flag">🇲🇲</span>
+                    <span class="language-name">
+                        <span class="english">Burmese</span>
+                        <span class="native">မြန်မာ</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="ne" data-native="नेपाली">
+                    <span class="flag">🇳🇵</span>
+                    <span class="language-name">
+                        <span class="english">Nepali</span>
+                        <span class="native">नेपाली</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="ja" data-native="日本語">
+                    <span class="flag">🇯🇵</span>
+                    <span class="language-name">
+                        <span class="english">Japanese</span>
+                        <span class="native">日本語</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="km" data-native="ខ្មែរ">
+                    <span class="flag">🇰🇭</span>
+                    <span class="language-name">
+                        <span class="english">Khmer</span>
+                        <span class="native">ខ្មែរ</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="id" data-native="Bahasa Indonesia">
+                    <span class="flag">🇮🇩</span>
+                    <span class="language-name">
+                        <span class="english">Indonesian</span>
+                        <span class="native">Bahasa Indonesia</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
+                <div class="language-item" data-lang="tl" data-native="Filipino">
+                    <span class="flag">🇵🇭</span>
+                    <span class="language-name">
+                        <span class="english">Tagalog</span>
+                        <span class="native">Filipino</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+
+            <!-- Next Button -->
+            <button class="next-btn" id="nextBtn">
+                <span id="nextText">Next</span>
+                <span>→</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const selectBtn = document.getElementById('selectBtn');
+        const buttonText = document.getElementById('buttonText');
+        const buttonArrow = document.getElementById('buttonArrow');
+        const languageList = document.getElementById('languageList');
+        const languageItems = document.querySelectorAll('.language-item');
+        const nextBtn = document.getElementById('nextBtn');
+        const nextText = document.getElementById('nextText');
+
+        let selectedLang = null;
+        let selectedLangName = null;
+        let selectedFlag = null;
+        let isFirstSelection = true; // Track if this is the first time selecting
+
+        // Next button translations
+        const nextTranslations = {
+            en: 'Next',
+            zh: '下一个',
+            ru: 'Далее',
+            uz: 'Keyingi',
+            si: 'ඊළඟ',
+            mn: 'Дараах',
+            vi: 'Tiếp theo',
+            th: 'ถัดไป',
+            kk: 'Келесі',
+            my: 'နောက်',
+            ne: 'अर्को',
+            ja: '次へ',
+            km: 'បន្ទាប់',
+            id: 'Berikutnya',
+            tl: 'Susunod'
+        };
+
+        // Toggle language list
+        selectBtn.addEventListener('click', () => {
+            languageList.classList.toggle('active');
+            
+            // Rotate arrow
+            if (languageList.classList.contains('active')) {
+                buttonArrow.textContent = '▲';
+            } else {
+                buttonArrow.textContent = '▼';
+            }
+        });
+
+        // Select language
+        languageItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Get language data
+                selectedLang = item.dataset.lang;
+                selectedLangName = item.dataset.native;
+                selectedFlag = item.querySelector('.flag').textContent;
+                
+                // Add smooth animation to select button
+                selectBtn.classList.add('updating');
+                
+                // Update button after brief delay for smooth transition
+                setTimeout(() => {
+                    buttonText.innerHTML = `
+                        <div class="selected-display">
+                            <span class="flag">${selectedFlag}</span>
+                            <span>${selectedLangName}</span>
+                        </div>
+                    `;
+                    buttonArrow.textContent = '▼';
+                    
+                    // Remove animation class
+                    selectBtn.classList.remove('updating');
+                }, 200);
+                
+                // Hide language list with animation
+                languageList.classList.remove('active');
+                
+                // Handle Next button
+                if (isFirstSelection) {
+                    // First time - show with slide up animation
+                    setTimeout(() => {
+                        nextBtn.classList.add('show');
+                        isFirstSelection = false;
+                    }, 100);
+                    
+                    // Set text after animation
+                    setTimeout(() => {
+                        nextText.textContent = nextTranslations[selectedLang] || 'Next';
+                    }, 650);
+                } else {
+                    // Subsequent times - just update text, no animation
+                    nextText.textContent = nextTranslations[selectedLang] || 'Next';
+                }
+                
+                // Save to localStorage
+                localStorage.setItem('selectedLanguage', selectedLang);
+                localStorage.setItem('selectedLanguageName', selectedLangName);
+            });
+        });
+
+        // Next button click - navigate to shopping page
+        nextBtn.addEventListener('click', () => {
+            // Add click animation
+            nextBtn.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                window.location.href = 'page3-shopping-malls.html';
+            }, 200);
+        });
+    </script>
+</body>
+</html>
