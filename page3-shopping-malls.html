@@ -71,7 +71,7 @@
         .welcome-text {
             font-size: 28px;
             font-weight: 500;
-            color: #808080;
+            color: #999999;
             text-align: center;
             opacity: 0;
             transform: scale(1);
@@ -126,6 +126,98 @@
             transform: scale(1.1);
         }
 
+        /* Brand Text with Shine Animation */
+        .brand-text {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 100;
+        }
+
+        .brand-name {
+            padding: 12px 48px;
+            color: #fff;
+            background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
+            background-position: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s infinite linear;
+            animation-fill-mode: forwards;
+            -webkit-text-size-adjust: none;
+            font-weight: 600;
+            font-size: 18px;
+            text-decoration: none;
+            white-space: nowrap;
+            font-family: 'Noto Sans', 'Poppins', sans-serif;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .brand-tagline {
+            color: #fff;
+            background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
+            background-position: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s infinite linear;
+            animation-fill-mode: forwards;
+            -webkit-text-size-adjust: none;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: 'Noto Sans', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0;
+            }
+            60% {
+                background-position: 180px;
+            }
+            100% {
+                background-position: 180px;
+            }
+        }
+
+        @-webkit-keyframes shine {
+            0% {
+                background-position: 0;
+            }
+            60% {
+                background-position: 180px;
+            }
+            100% {
+                background-position: 180px;
+            }
+        }
+
+        @-moz-keyframes shine {
+            0% {
+                background-position: 0;
+            }
+            60% {
+                background-position: 180px;
+            }
+            100% {
+                background-position: 180px;
+            }
+        }
+
+        @-o-keyframes shine {
+            0% {
+                background-position: 0;
+            }
+            60% {
+                background-position: 180px;
+            }
+            100% {
+                background-position: 180px;
+            }
+        }
+
         /* Mobile Responsive */
         @media (max-width: 600px) {
             .container {
@@ -147,6 +239,19 @@
                 top: 12px;
                 left: 12px;
             }
+
+            .brand-text {
+                bottom: 20px;
+            }
+
+            .brand-name {
+                font-size: 16px;
+                padding: 1px 24px;
+            }
+
+            .brand-tagline {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -159,6 +264,12 @@
             <!-- Welcome Text (shows first, then fades out, page stays blank) -->
             <div class="welcome-text" id="welcomeText"></div>
         </div>
+    </div>
+
+    <!-- Brand Text at Bottom -->
+    <div class="brand-text">
+        <div class="brand-name">Blossom K Beauty</div>
+        <div class="brand-tagline">From Korea</div>
     </div>
 
     <script>
