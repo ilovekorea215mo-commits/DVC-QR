@@ -17,7 +17,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #BFBFBF;
+            background: #ffffff;
             position: relative;
             overflow: hidden;
         }
@@ -33,6 +33,21 @@
                 opacity: 1;
                 transform: scale(1);
             }
+        }
+
+        @keyframes fadeOutUp {
+            from { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+        }
+
+        body.fade-out .splash-container {
+            animation: fadeOutUp 0.8s ease forwards;
         }
 
         /* Remove Vitruvian Man background - clean white look */
@@ -72,10 +87,16 @@
     </div>
 
     <script>
-        // Auto redirect to language selection after 3 seconds
+        // Fade out and redirect after 4 seconds
         setTimeout(() => {
-            window.location.href = 'page2-language-selection.html';
-        }, 3000);
+            // Add fade-out class to body
+            document.body.classList.add('fade-out');
+            
+            // Wait for animation to complete, then redirect
+            setTimeout(() => {
+                window.location.href = 'page2-language-selection.html';
+            }, 800); // 800ms matches animation duration
+        }, 4000); // 4 seconds display time
     </script>
 </body>
 </html>
