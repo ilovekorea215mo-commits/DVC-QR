@@ -760,7 +760,7 @@
 </head>
 <body>
     <!-- Back Button (outside container, at page top left) -->
-    <a href="page2-language-selection.html" class="back-button">←</a>
+    <a href="page2-language-selection.html" class="back-button" id="backButton">←</a>
 
     <div class="container">
         <div class="glass-plate">
@@ -1087,10 +1087,35 @@
             }
         });
 
-        // Close store popup on Escape key
+        // Close store popup on Escape key - allow back navigation
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && storePopup.classList.contains('active')) {
+            const videoPopup = document.getElementById('videoPopup');
+            const storePopup = document.getElementById('storePopup');
+            
+            if (e.key === 'Escape') {
+                if (videoPopup.classList.contains('active')) {
+                    videoPopup.classList.remove('active');
+                    videoPlayer.pause();
+                    videoPlayer.currentTime = 0;
+                } else if (storePopup.classList.contains('active')) {
+                    storePopup.classList.remove('active');
+                }
+            }
+        });
+
+        // Handle browser back button - close popups first
+        window.addEventListener('popstate', (e) => {
+            const videoPopup = document.getElementById('videoPopup');
+            const storePopup = document.getElementById('storePopup');
+            
+            if (videoPopup.classList.contains('active')) {
+                videoPopup.classList.remove('active');
+                videoPlayer.pause();
+                videoPlayer.currentTime = 0;
+                history.pushState(null, '', location.href);
+            } else if (storePopup.classList.contains('active')) {
                 storePopup.classList.remove('active');
+                history.pushState(null, '', location.href);
             }
         });
 
