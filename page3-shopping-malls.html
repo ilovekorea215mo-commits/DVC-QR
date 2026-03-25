@@ -187,7 +187,7 @@
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
-        /* Video Popup Player - UPDATED: SMALLER + ROUNDED CORNERS */
+        /* Video Popup Player - TRANSPARENT BACKGROUND */
         .video-popup {
             display: none;
             position: fixed;
@@ -195,7 +195,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: transparent;
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -551,7 +551,57 @@
         // Initialize page
         window.addEventListener('load', () => {
             showWelcomeAnimation();
+            translateButtons(); // Translate buttons based on language
         });
+
+        // Button translations by language
+        const buttonTranslations = {
+            howToUse: {
+                en: 'How to use',
+                zh: '使用方法',
+                ru: 'Как использовать',
+                uz: 'Qanday foydalanish',
+                si: 'භාවිතා කරන්නේ කෙසේද',
+                mn: 'Хэрхэн хэрэглэх',
+                vi: 'Cách sử dụng',
+                th: 'วิธีใช้งาน',
+                kk: 'Қалай пайдалану',
+                my: 'အသုံးပြုနည်း',
+                ne: 'कसरी प्रयोग गर्ने',
+                ja: '使い方',
+                ko: '사용 방법',
+                km: 'របៀបប្រើ',
+                id: 'Cara menggunakan',
+                tl: 'Paano gamitin'
+            },
+            shoppingMall: {
+                en: 'Shopping mall',
+                zh: '购物中心',
+                ru: 'Торговый центр',
+                uz: 'Savdo markazi',
+                si: 'සාප්පු සංකීර්ණය',
+                mn: 'Худалдааны төв',
+                vi: 'Trung tâm mua sắm',
+                th: 'ศูนย์การค้า',
+                kk: 'Сауда орталығы',
+                my: 'စျေးဝယ်စင်တာ',
+                ne: 'किनमेल मल',
+                ja: 'ショッピングモール',
+                ko: '쇼핑몰',
+                km: 'មជ្ឈមណ្ឌលទិញទំនិញ',
+                id: 'Pusat perbelanjaan',
+                tl: 'Shopping mall'
+            }
+        };
+
+        // Translate buttons based on selected language
+        function translateButtons() {
+            const howToUseSpan = document.querySelector('#howToUseBtn span');
+            const shoppingMallSpan = document.querySelector('#shoppingMallBtn span');
+            
+            howToUseSpan.textContent = buttonTranslations.howToUse[selectedLang] || buttonTranslations.howToUse.en;
+            shoppingMallSpan.textContent = buttonTranslations.shoppingMall[selectedLang] || buttonTranslations.shoppingMall.en;
+        }
 
         // Video Popup Controls
         const howToUseBtn = document.getElementById('howToUseBtn');
@@ -567,14 +617,14 @@
             videoPlayer.play();
         });
 
-        // Close video popup
+        // Close video popup (stays on page 3)
         closeBtn.addEventListener('click', () => {
             videoPopup.classList.remove('active');
             videoPlayer.pause();
             videoPlayer.currentTime = 0;
         });
 
-        // Close on background click
+        // Close on background click (stays on page 3)
         videoPopup.addEventListener('click', (e) => {
             if (e.target === videoPopup) {
                 videoPopup.classList.remove('active');
@@ -583,7 +633,7 @@
             }
         });
 
-        // Close on Escape key
+        // Close on Escape key (stays on page 3)
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && videoPopup.classList.contains('active')) {
                 videoPopup.classList.remove('active');
