@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Language - DVC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,7 +15,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -79,7 +82,7 @@
             border-radius: 50px;
             color: white;
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 400;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
@@ -152,6 +155,16 @@
             box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
             opacity: 0;
             transform: translateY(30px) scale(0.9);
+        }
+
+        /* Smooth text transition for Next button */
+        .next-btn #nextText {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .next-btn #nextText.updating {
+            opacity: 0;
+            transform: translateY(-5px);
         }
 
         .next-btn.show {
@@ -596,8 +609,13 @@
                         nextText.textContent = nextTranslations[selectedLang] || 'Next';
                     }, 650);
                 } else {
-                    // Subsequent times - just update text, no animation
-                    nextText.textContent = nextTranslations[selectedLang] || 'Next';
+                    // Subsequent times - smooth fade transition
+                    nextText.classList.add('updating');
+                    
+                    setTimeout(() => {
+                        nextText.textContent = nextTranslations[selectedLang] || 'Next';
+                        nextText.classList.remove('updating');
+                    }, 150);
                 }
                 
                 // Save to localStorage
