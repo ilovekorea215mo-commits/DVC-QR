@@ -71,7 +71,7 @@
         .welcome-text {
             font-size: 28px;
             font-weight: 500;
-            color: #f3f3f3;
+            color: #999999;
             text-align: center;
             opacity: 0;
             transform: scale(1);
@@ -85,10 +85,10 @@
                 opacity: 0;
             }
             25% {
-                opacity: 0.7;
+                opacity: 0.9;
             }
             75% {
-                opacity: 0.7;
+                opacity: 0.9;
             }
             100% {
                 opacity: 0;
@@ -185,6 +185,110 @@
 
         .animated-btn:hover {
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Video Popup Player - Fullscreen on same page */
+        .video-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-popup.active {
+            display: flex;
+            animation: popupFadeIn 0.3s ease;
+        }
+
+        @keyframes popupFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid white;
+            border-radius: 50%;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+
+        .video-wrapper video {
+            width: auto;
+            height: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        /* Mobile - Vertical player fills screen */
+        @media (max-width: 600px) {
+            .video-container {
+                max-width: 100%;
+                max-height: 100vh;
+            }
+
+            .video-wrapper video {
+                width: 100%;
+                height: auto;
+                max-height: 100vh;
+            }
+
+            .close-btn {
+                width: 40px;
+                height: 40px;
+                top: 15px;
+                right: 15px;
+                font-size: 24px;
+            }
         }
 
         /* Back Button - Small, at page top left corner */
@@ -380,6 +484,19 @@
         <div class="brand-tagline">From Korea</div>
     </div>
 
+    <!-- Video Popup Player -->
+    <div class="video-popup" id="videoPopup">
+        <div class="video-container">
+            <button class="close-btn" id="closeBtn">×</button>
+            <div class="video-wrapper">
+                <video id="videoPlayer" controls loop>
+                    <source src="videos/how-to-use.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Welcome messages by language
         const welcomeMessages = {
@@ -426,6 +543,53 @@
         // Initialize page
         window.addEventListener('load', () => {
             showWelcomeAnimation();
+        });
+
+        // Video Popup Controls
+        const howToUseBtn = document.getElementById('howToUseBtn');
+        const shoppingMallBtn = document.getElementById('shoppingMallBtn');
+        const videoPopup = document.getElementById('videoPopup');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const closeBtn = document.getElementById('closeBtn');
+
+        // Open video popup
+        howToUseBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            videoPopup.classList.add('active');
+            videoPlayer.play();
+        });
+
+        // Close video popup
+        closeBtn.addEventListener('click', () => {
+            videoPopup.classList.remove('active');
+            videoPlayer.pause();
+            videoPlayer.currentTime = 0;
+        });
+
+        // Close on background click
+        videoPopup.addEventListener('click', (e) => {
+            if (e.target === videoPopup) {
+                videoPopup.classList.remove('active');
+                videoPlayer.pause();
+                videoPlayer.currentTime = 0;
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoPopup.classList.contains('active')) {
+                videoPopup.classList.remove('active');
+                videoPlayer.pause();
+                videoPlayer.currentTime = 0;
+            }
+        });
+
+        // Shopping Mall button (you can add link later)
+        shoppingMallBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Add your shopping mall page link here
+            // window.location.href = 'shopping-mall.html';
+            alert('Shopping Mall - Coming Soon!');
         });
     </script>
 </body>
