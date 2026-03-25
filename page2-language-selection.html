@@ -23,6 +23,18 @@
             background-repeat: no-repeat;
             position: relative;
             overflow: hidden;
+            animation: fadeInFromBottom 0.8s ease forwards;
+        }
+
+        @keyframes fadeInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Dark overlay - REDUCED for better background visibility */
@@ -452,6 +464,15 @@
                     <span class="arrow">→</span>
                 </div>
 
+                <div class="language-item" data-lang="ko" data-native="한국어">
+                    <span class="flag">🇰🇷</span>
+                    <span class="language-name">
+                        <span class="english">Korean</span>
+                        <span class="native">한국어</span>
+                    </span>
+                    <span class="arrow">→</span>
+                </div>
+
                 <div class="language-item" data-lang="km" data-native="ខ្មែរ">
                     <span class="flag">🇰🇭</span>
                     <span class="language-name">
@@ -516,6 +537,7 @@
             my: 'နောက်',
             ne: 'अर्को',
             ja: '次へ',
+            ko: '다음',
             km: 'បន្ទាប់',
             id: 'Berikutnya',
             tl: 'Susunod'
