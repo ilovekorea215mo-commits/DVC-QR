@@ -215,6 +215,187 @@
             }
         }
 
+        /* Glass Store Popup */
+        .store-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .store-popup.active {
+            display: flex;
+            animation: popupFadeIn 0.3s ease;
+        }
+
+        /* Glass Container for Store Selection */
+        .store-glass-container {
+            position: relative;
+            width: 90%;
+            max-width: 520px;
+            min-height: 320px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            padding: 60px 40px 40px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Logo Section - Full Background */
+        .store-logo-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 20px;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .store-logo-section img {
+            width: 240px;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Buttons Section - On Top of Logo */
+        .store-buttons-section {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        /* Close Button for Store Popup */
+        .store-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .store-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        /* Title for Store Selection */
+        .store-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        /* Normal Store Buttons in Glass Popup */
+        .store-btn {
+            width: 100%;
+            padding: 18px 35px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-radius: 15px;
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .store-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .store-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Mobile Responsive for Store Popup */
+        @media (max-width: 600px) {
+            .store-glass-container {
+                width: 92%;
+                max-width: none;
+                min-height: 300px;
+                padding: 50px 30px 35px 30px;
+            }
+
+            .store-logo-section {
+                padding-left: 10px;
+                opacity: 0.08;
+            }
+
+            .store-logo-section img {
+                width: 180px;
+            }
+
+            .store-buttons-section {
+                max-width: 100%;
+                gap: 16px;
+            }
+
+            .store-title {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            .store-btn {
+                padding: 16px 28px;
+                font-size: 15px;
+            }
+
+            .store-close-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
+                top: 12px;
+                right: 12px;
+            }
+        }
+
         /* Secondary Buttons Container (appears after shopping mall click) */
         .secondary-buttons {
             display: none;
@@ -582,29 +763,6 @@
                     <span>Shopping mall</span>
                 </a>
             </div>
-
-            <!-- Secondary Buttons (show after shopping mall click) -->
-            <div class="secondary-buttons" id="secondaryButtons">
-                <!-- Korean Store Button with Gooey Marquee -->
-                <button class="marquee-btn" id="koreanStoreBtn">
-                    <div class="marquee_blur" aria-hidden="true">
-                        <p class="marquee_text" id="koreanStoreBlur">Korean Store</p>
-                    </div>
-                    <div class="marquee_clear">
-                        <p class="marquee_text" id="koreanStoreText">Korean Store</p>
-                    </div>
-                </button>
-                
-                <!-- Local Store Button with Gooey Marquee -->
-                <button class="marquee-btn" id="localStoreBtn">
-                    <div class="marquee_blur" aria-hidden="true">
-                        <p class="marquee_text" id="localStoreBlur">Sri Lanka Store</p>
-                    </div>
-                    <div class="marquee_clear">
-                        <p class="marquee_text" id="localStoreText">Sri Lanka Store</p>
-                    </div>
-                </button>
-            </div>
         </div>
     </div>
 
@@ -612,6 +770,31 @@
     <div class="brand-text">
         <div class="brand-name">Blossom K Beauty</div>
         <div class="brand-tagline">From Korea</div>
+    </div>
+
+    <!-- Store Selection Glass Popup -->
+    <div class="store-popup" id="storePopup">
+        <div class="store-glass-container">
+            <button class="store-close-btn" id="storeCloseBtn">×</button>
+            
+            <!-- Logo Section - Left Side -->
+            <div class="store-logo-section">
+                <img src="images/vitruvian-logo.png" alt="DVC Logo">
+            </div>
+            
+            <!-- Buttons Section - Right Side -->
+            <div class="store-buttons-section">
+                <h2 class="store-title" id="storeTitle">Select Store</h2>
+                
+                <button class="store-btn" id="koreanStoreBtn">
+                    <span id="koreanStoreText">Korean Store</span>
+                </button>
+                
+                <button class="store-btn" id="localStoreBtn">
+                    <span id="localStoreText">Sri Lanka Store</span>
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Video Popup Player -->
@@ -714,6 +897,24 @@
                 id: 'Pusat perbelanjaan',
                 tl: 'Shopping mall'
             },
+            selectStore: {
+                en: 'Select Store',
+                zh: '选择商店',
+                ru: 'Выберите магазин',
+                uz: 'Do\'konni tanlang',
+                si: 'වෙළඳසැල තෝරන්න',
+                mn: 'Дэлгүүр сонгох',
+                vi: 'Chọn cửa hàng',
+                th: 'เลือกร้านค้า',
+                kk: 'Дүкенді таңдаңыз',
+                my: 'စတိုးရွေးချယ်ပါ',
+                ne: 'पसल छान्नुहोस्',
+                ja: 'ストアを選択',
+                ko: '스토어 선택',
+                km: 'ជ្រើសរើសហាង',
+                id: 'Pilih Toko',
+                tl: 'Pumili ng Store'
+            },
             koreanStore: {
                 en: 'Korean Store',
                 zh: '韩国商店',
@@ -779,22 +980,21 @@
             shoppingMallSpan.textContent = buttonTranslations.shoppingMall[selectedLang] || buttonTranslations.shoppingMall.en;
         }
 
-        // Translate secondary store buttons
-        function translateStoreButtons() {
+        // Translate store popup
+        function translateStorePopup() {
+            const storeTitle = document.getElementById('storeTitle');
             const koreanStoreText = document.getElementById('koreanStoreText');
-            const koreanStoreBlur = document.getElementById('koreanStoreBlur');
             const localStoreText = document.getElementById('localStoreText');
-            const localStoreBlur = document.getElementById('localStoreBlur');
 
+            const titleText = buttonTranslations.selectStore[selectedLang] || buttonTranslations.selectStore.en;
             const koreanText = buttonTranslations.koreanStore[selectedLang] || buttonTranslations.koreanStore.en;
             const countryName = buttonTranslations.countryNames[selectedLang] || buttonTranslations.countryNames.en;
             const storeWord = buttonTranslations.countryStore[selectedLang] || buttonTranslations.countryStore.en;
             const localText = `${countryName} ${storeWord}`;
 
+            storeTitle.textContent = titleText;
             koreanStoreText.textContent = koreanText;
-            koreanStoreBlur.textContent = koreanText;
             localStoreText.textContent = localText;
-            localStoreBlur.textContent = localText;
         }
 
         // Video Popup Controls
@@ -836,18 +1036,35 @@
             }
         });
 
-        // Shopping Mall button - Show store selection
+        // Shopping Mall button - Show glass popup
         shoppingMallBtn.addEventListener('click', (e) => {
             e.preventDefault();
             
-            // Hide primary buttons
-            const buttonsContainer = document.getElementById('buttonsContainer');
-            buttonsContainer.style.display = 'none';
-            
-            // Show secondary store buttons
-            const secondaryButtons = document.getElementById('secondaryButtons');
-            translateStoreButtons(); // Translate before showing
-            secondaryButtons.classList.add('show');
+            const storePopup = document.getElementById('storePopup');
+            translateStorePopup(); // Translate before showing
+            storePopup.classList.add('active');
+        });
+
+        // Close store popup
+        const storeCloseBtn = document.getElementById('storeCloseBtn');
+        storeCloseBtn.addEventListener('click', () => {
+            const storePopup = document.getElementById('storePopup');
+            storePopup.classList.remove('active');
+        });
+
+        // Close store popup on background click
+        const storePopup = document.getElementById('storePopup');
+        storePopup.addEventListener('click', (e) => {
+            if (e.target === storePopup) {
+                storePopup.classList.remove('active');
+            }
+        });
+
+        // Close store popup on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && storePopup.classList.contains('active')) {
+                storePopup.classList.remove('active');
+            }
         });
 
         // Korean Store button click
