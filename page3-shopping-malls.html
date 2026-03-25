@@ -49,7 +49,7 @@
             align-items: center;
         }
 
-        /* Glass Plate - YOUR CUSTOM SETTINGS: blur(10px) saturate(100%) */
+        /* Glass Plate */
         .glass-plate {
             width: 100%;
             height: 100%;
@@ -79,27 +79,18 @@
             letter-spacing: 3px;
         }
 
-        /* Slow Fade In/Out Animation */
         @keyframes welcomeFadeIn {
-            0% {
-                opacity: 0;
-            }
-            25% {
-                opacity: 0.9;
-            }
-            75% {
-                opacity: 0.9;
-            }
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 0; }
+            25% { opacity: 0.9; }
+            75% { opacity: 0.9; }
+            100% { opacity: 0; }
         }
 
         .welcome-text.animate {
             animation: welcomeFadeIn 4s ease forwards;
         }
 
-        /* Animated Buttons in Glass Plate */
+        /* Animated Buttons */
         .buttons-container {
             display: none;
             flex-direction: column;
@@ -117,14 +108,8 @@
         }
 
         @keyframes buttonsAppear {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .animated-btn {
@@ -187,7 +172,37 @@
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
-        /* Video Popup Player - TRANSPARENT BACKGROUND */
+        /* Language Selector - Top Right */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 200;
+        }
+
+        .language-dropdown {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            appearance: none;
+            padding-right: 35px;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg width="12" height="8" viewBox="0 0 12 8" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6L11 1"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            transition: all 0.3s ease;
+        }
+
+        .language-dropdown:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Video Popup */
         .video-popup {
             display: none;
             position: fixed;
@@ -207,308 +222,10 @@
         }
 
         @keyframes popupFadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        /* Glass Store Popup */
-        .store-popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .store-popup.active {
-            display: flex;
-            animation: popupFadeIn 0.3s ease;
-        }
-
-        /* Glass Container for Store Selection */
-        .store-glass-container {
-            position: relative;
-            width: 90%;
-            max-width: 468px;
-            min-height: 288px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px) saturate(150%);
-            -webkit-backdrop-filter: blur(20px) saturate(150%);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            padding: 54px 36px 36px 36px;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        /* Logo Section - RIGHT SIDE CUTOFF (Like Reference) */
-        .store-logo-section {
-            position: absolute;
-            top: 0;
-            right: -80px;
-            width: 50%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            opacity: 0.18;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .store-logo-section img {
-            width: 420px;
-            height: auto;
-            filter: brightness(0);
-            margin-right: -50px;
-        }
-
-        /* Store Names Overlay - COMPLETELY HIDDEN */
-        .store-names-overlay {
-            display: none !important;
-            visibility: hidden !important;
-        }
-
-        /* Buttons Section - On Top of Logo */
-        .store-buttons-section {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 360px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            align-items: stretch;
-        }
-
-        /* Close Button for Store Popup */
-        .store-close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .store-close-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(90deg) scale(1.1);
-        }
-
-        /* Title for Store Selection */
-        .store-title {
-            font-size: 22px;
-            font-weight: 600;
-            color: #ffffff;
-            text-align: center;
-            margin-bottom: 22px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            letter-spacing: 0.5px;
-        }
-
-        /* Normal Store Buttons in Glass Popup */
-        .store-btn {
-            width: 100%;
-            padding: 16px 32px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 2px solid rgba(255, 255, 255, 0.35);
-            border-radius: 15px;
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .store-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-        }
-
-        .store-btn:active {
-            transform: translateY(-1px);
-        }
-
-        /* Mobile Responsive for Store Popup */
-        @media (max-width: 600px) {
-            .store-glass-container {
-                width: 92%;
-                max-width: none;
-                min-height: 270px;
-                padding: 45px 27px 32px 27px;
-            }
-
-            .store-logo-section {
-                right: -50px;
-                width: 65%;
-                opacity: 0.15;
-            }
-
-            .store-logo-section img {
-                width: 320px;
-                margin-right: -40px;
-            }
-
-            .store-name-text {
-                display: none !important;
-            }
-
-            .store-buttons-section {
-                max-width: 100%;
-                gap: 14px;
-            }
-
-            .store-title {
-                font-size: 18px;
-                margin-bottom: 18px;
-            }
-
-            .store-btn {
-                padding: 14px 25px;
-                font-size: 14px;
-            }
-
-            .store-close-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 20px;
-                top: 12px;
-                right: 12px;
-            }
-        }
-
-        /* Secondary Buttons Container (appears after shopping mall click) */
-        .secondary-buttons {
-            display: none;
-            flex-direction: column;
-            gap: 30px;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            opacity: 0;
-        }
-
-        .secondary-buttons.show {
-            display: flex;
-            animation: buttonsAppear 0.8s ease forwards;
-        }
-
-        /* Gooey Marquee Button Wrapper */
-        .marquee-btn {
-            position: relative;
-            width: 100%;
-            max-width: 320px;
-            height: 70px;
-            display: grid;
-            place-items: center;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            background-color: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .marquee-btn:hover {
-            border-color: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-            transform: scale(1.02);
-        }
-
-        /* Gooey Marquee Text */
-        .marquee_text {
-            position: absolute;
-            min-width: 100%;
-            white-space: nowrap;
-            color: #fefefe;
-            font-weight: 600;
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: marqueeScroll 16s infinite linear;
-        }
-
-        @keyframes marqueeScroll {
-            from { 
-                transform: translateX(70%); 
-            }
-            to { 
-                transform: translateX(-70%); 
-            }
-        }
-
-        /* Blur Layer with Gooey Effect */
-        .marquee_blur {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            place-items: center;
-            background-color: black;
-            background-image:
-                linear-gradient(to right, black, 1rem, transparent 50%),
-                linear-gradient(to left, black, 1rem, transparent 50%);
-            filter: contrast(15);
-            pointer-events: none;
-        }
-
-        .marquee_blur .marquee_text {
-            filter: blur(0.07em);
-        }
-
-        /* Clear Layer on Top */
-        .marquee_clear {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            place-items: center;
-            pointer-events: none;
-        }
-
-        /* Mobile responsive for gooey marquee */
-        @media (max-width: 600px) {
-            .marquee-btn {
-                max-width: 280px;
-                height: 60px;
-            }
-
-            .marquee_text {
-                font-size: 15px;
-                letter-spacing: 1.5px;
-            }
-        }
-
-        /* UPDATED: Smaller video container */
         .video-container {
             position: relative;
             width: 85%;
@@ -520,7 +237,6 @@
             justify-content: center;
         }
 
-        /* UPDATED: Smaller close button */
         .close-btn {
             position: absolute;
             top: 10px;
@@ -546,7 +262,6 @@
             transform: rotate(90deg) scale(1.1);
         }
 
-        /* UPDATED: Rounded corners wrapper */
         .video-wrapper {
             position: relative;
             width: 100%;
@@ -559,7 +274,6 @@
             overflow: hidden;
         }
 
-        /* UPDATED: Rounded corners video */
         .video-wrapper video {
             width: 100%;
             height: auto;
@@ -568,31 +282,295 @@
             border-radius: 20px;
         }
 
-        /* Mobile - UPDATED: Smaller with rounded corners */
-        @media (max-width: 600px) {
-            .video-container {
-                width: 90%;
-                max-width: 100%;
-                max-height: 80vh;
-            }
-
-            .video-wrapper video {
-                width: 100%;
-                height: auto;
-                max-height: 80vh;
-                border-radius: 15px;
-            }
-
-            .close-btn {
-                width: 35px;
-                height: 35px;
-                top: 8px;
-                right: 8px;
-                font-size: 20px;
-            }
+        /* Store Selection Popup */
+        .store-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Back Button - Small, at page top left corner */
+        .store-popup.active {
+            display: flex;
+            animation: popupFadeIn 0.3s ease;
+        }
+
+        .store-glass-container {
+            position: relative;
+            width: 90%;
+            max-width: 468px;
+            min-height: 288px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            padding: 54px 36px 36px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Logo Background - Right Side */
+        .store-logo-section {
+            position: absolute;
+            top: 0;
+            right: -80px;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            opacity: 0.18;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .store-logo-section img {
+            width: 420px;
+            height: auto;
+            filter: brightness(0);
+            margin-right: -50px;
+        }
+
+        .store-names-overlay {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        .store-buttons-section {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 360px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .store-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 22px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .store-btn {
+            width: 100%;
+            padding: 16px 32px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-radius: 15px;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .store-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .store-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .store-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        /* Links Popup - Slide in from right */
+        .links-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1100;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .links-popup.active {
+            display: block;
+            right: 0;
+        }
+
+        .links-container {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 90%;
+            max-width: 450px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .links-popup.active .links-container {
+            transform: translateX(0);
+        }
+
+        .links-header {
+            padding: 30px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .links-back-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .links-back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .links-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: white;
+            padding: 5px;
+        }
+
+        .links-title {
+            font-size: 20px;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .links-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 2px solid transparent;
+        }
+
+        .link-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .link-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .link-text {
+            flex: 1;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .link-arrow {
+            color: #667eea;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .link-item:hover .link-arrow {
+            transform: translateX(5px);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #f44336;
+        }
+
+        /* Back Button */
         .back-button {
             position: fixed;
             top: 15px;
@@ -619,7 +597,7 @@
             transform: scale(1.1);
         }
 
-        /* Brand Text with Shine Animation */
+        /* Brand Text */
         .brand-text {
             position: fixed;
             bottom: 15px;
@@ -637,11 +615,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 3s infinite linear;
-            animation-fill-mode: forwards;
-            -webkit-text-size-adjust: none;
             font-weight: 600;
             font-size: 12px;
-            text-decoration: none;
             white-space: nowrap;
             font-family: 'Noto Sans', 'Poppins', sans-serif;
             display: block;
@@ -655,8 +630,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 3s infinite linear;
-            animation-fill-mode: forwards;
-            -webkit-text-size-adjust: none;
             font-size: 8px;
             font-weight: 400;
             font-family: 'Noto Sans', sans-serif;
@@ -664,51 +637,9 @@
         }
 
         @keyframes shine {
-            0% {
-                background-position: 0;
-            }
-            60% {
-                background-position: 180px;
-            }
-            100% {
-                background-position: 180px;
-            }
-        }
-
-        @-webkit-keyframes shine {
-            0% {
-                background-position: 0;
-            }
-            60% {
-                background-position: 180px;
-            }
-            100% {
-                background-position: 180px;
-            }
-        }
-
-        @-moz-keyframes shine {
-            0% {
-                background-position: 0;
-            }
-            60% {
-                background-position: 180px;
-            }
-            100% {
-                background-position: 180px;
-            }
-        }
-
-        @-o-keyframes shine {
-            0% {
-                background-position: 0;
-            }
-            60% {
-                background-position: 180px;
-            }
-            100% {
-                background-position: 180px;
-            }
+            0% { background-position: 0; }
+            60% { background-position: 180px; }
+            100% { background-position: 180px; }
         }
 
         /* Mobile Responsive */
@@ -733,41 +664,99 @@
                 left: 12px;
             }
 
-            .brand-text {
-                bottom: 10px;
+            .language-selector {
+                top: 12px;
+                right: 12px;
             }
 
-            .brand-name {
-                font-size: 10px;
-                padding: 6px 16px;
+            .language-dropdown {
+                font-size: 12px;
+                padding: 8px 12px;
+                padding-right: 30px;
             }
 
-            .brand-tagline {
-                font-size: 7px;
+            .store-glass-container {
+                width: 92%;
+                min-height: 270px;
+                padding: 45px 27px 32px 27px;
             }
 
-            .animated-btn {
+            .store-logo-section {
+                right: -50px;
+                width: 65%;
+                opacity: 0.15;
+            }
+
+            .store-logo-section img {
+                width: 320px;
+                margin-right: -40px;
+            }
+
+            .store-buttons-section {
+                max-width: 100%;
+                gap: 14px;
+            }
+
+            .store-title {
+                font-size: 18px;
+                margin-bottom: 18px;
+            }
+
+            .store-btn {
+                padding: 14px 25px;
                 font-size: 14px;
-                padding: 12px 30px;
-                min-width: 180px;
             }
 
-            .buttons-container {
-                gap: 20px;
+            .links-container {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .links-header {
+                padding: 20px 15px;
+            }
+
+            .links-title {
+                font-size: 16px;
+            }
+
+            .video-container {
+                width: 90%;
+                max-height: 80vh;
+            }
+
+            .video-wrapper video {
+                width: 100%;
+                max-height: 80vh;
+                border-radius: 15px;
+            }
+
+            .close-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Back Button (outside container, at page top left) -->
+    <!-- Back Button -->
     <a href="page2-language-selection.html" class="back-button" id="backButton">←</a>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <select class="language-dropdown" id="languageSelector">
+            <option value="en">🇬🇧 English</option>
+            <option value="ko">🇰🇷 한국어</option>
+        </select>
+    </div>
 
     <div class="container">
         <div class="glass-plate">
-            <!-- Welcome Text (shows first, then fades out) -->
+            <!-- Welcome Text -->
             <div class="welcome-text" id="welcomeText"></div>
 
-            <!-- Animated Buttons (show after welcome fades) -->
+            <!-- Animated Buttons -->
             <div class="buttons-container" id="buttonsContainer">
                 <a href="#" class="animated-btn" id="howToUseBtn">
                     <span>How to use</span>
@@ -779,44 +768,13 @@
         </div>
     </div>
 
-    <!-- Brand Text at Bottom -->
+    <!-- Brand Text -->
     <div class="brand-text">
         <div class="brand-name">Blossom K Beauty</div>
         <div class="brand-tagline">From Korea</div>
     </div>
 
-    <!-- Store Selection Glass Popup -->
-    <div class="store-popup" id="storePopup">
-        <div class="store-glass-container">
-            <button class="store-close-btn" id="storeCloseBtn">×</button>
-            
-            <!-- Logo Section - Left Side -->
-            <div class="store-logo-section">
-                <img src="images/vitruvian-logo.png" alt="DVC Logo">
-            </div>
-            
-            <!-- Store Names Overlay on Logo -->
-            <div class="store-names-overlay">
-                <div class="store-name-text" id="overlayKoreanName">Korean Store</div>
-                <div class="store-name-text" id="overlayLocalName">Sri Lanka Store</div>
-            </div>
-            
-            <!-- Buttons Section - Right Side -->
-            <div class="store-buttons-section">
-                <h2 class="store-title" id="storeTitle">Select Store</h2>
-                
-                <button class="store-btn" id="koreanStoreBtn">
-                    <span id="koreanStoreText">Korean Store</span>
-                </button>
-                
-                <button class="store-btn" id="localStoreBtn">
-                    <span id="localStoreText">Sri Lanka Store</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Video Popup Player -->
+    <!-- Video Popup -->
     <div class="video-popup" id="videoPopup">
         <div class="video-container">
             <button class="close-btn" id="closeBtn">×</button>
@@ -829,10 +787,48 @@
         </div>
     </div>
 
+    <!-- Store Selection Popup -->
+    <div class="store-popup" id="storePopup">
+        <div class="store-glass-container">
+            <button class="store-close-btn" id="storeCloseBtn">×</button>
+            
+            <div class="store-logo-section">
+                <img src="images/vitruvian-logo.png" alt="DVC Logo">
+            </div>
+            
+            <div class="store-buttons-section">
+                <h2 class="store-title" id="storeTitle">Select Stores</h2>
+                
+                <button class="store-btn" id="koreanStoreBtn">
+                    <span id="koreanStoreText">Korean Stores</span>
+                </button>
+                
+                <button class="store-btn" id="localStoreBtn">
+                    <span id="localStoreText">Sri Lanka Stores</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Links Popup (Slides from Right) -->
+    <div class="links-popup" id="linksPopup">
+        <div class="links-container">
+            <div class="links-header">
+                <button class="links-back-btn" id="linksBackBtn">←</button>
+                <img class="links-logo" id="linksLogo" src="images/vitruvian-logo.png" alt="Store Logo">
+                <h2 class="links-title" id="linksTitle">Korean Stores</h2>
+            </div>
+            <div class="links-list" id="linksList">
+                <div class="loading">Loading stores...</div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Welcome messages by language
+        // Welcome messages
         const welcomeMessages = {
             en: 'WELCOME',
+            ko: '안녕하세요',
             zh: '欢迎',
             ru: 'ДОБРО ПОЖАЛОВАТЬ',
             uz: 'XUШ KELIBSIZ',
@@ -844,208 +840,127 @@
             my: 'ကြိုဆိုပါတယ်',
             ne: 'स्वागत छ',
             ja: 'ようこそ',
-            ko: '안녕하세요',
             km: 'សូមស្វាគមន៍',
             id: 'SELAMAT DATANG',
             tl: 'MALIGAYANG PAGDATING'
         };
 
-        // Get selected language
-        const selectedLang = localStorage.getItem('selectedLanguage') || 'en';
+        // Button translations
+        const buttonTranslations = {
+            howToUse: {
+                en: 'How to use',
+                ko: '사용 방법'
+            },
+            shoppingMall: {
+                en: 'Shopping mall',
+                ko: '쇼핑몰'
+            },
+            selectStore: {
+                en: 'Select Stores',
+                ko: '스토어 선택'
+            },
+            koreanStores: {
+                en: 'Korean Stores',
+                ko: '한국 스토어'
+            },
+            countryStores: {
+                en: '{country} Stores',
+                ko: '{country} 스토어'
+            }
+        };
 
-        // Show welcome animation
+        // Country names
+        const countryNames = {
+            en: 'UK',
+            ko: '한국',
+            zh: '中国',
+            ru: 'Россия',
+            uz: 'O\'zbekiston',
+            si: 'ශ්‍රී ලංකාව',
+            mn: 'Монгол',
+            vi: 'Việt Nam',
+            th: 'ไทย',
+            kk: 'Қазақстан',
+            my: 'မြန်မာ',
+            ne: 'नेपाल',
+            ja: '日本',
+            km: 'កម្ពុជា',
+            id: 'Indonesia',
+            tl: 'Pilipinas'
+        };
+
+        // Get selected languages
+        let currentLang = localStorage.getItem('selectedLanguage') || 'en';
+        let displayLang = localStorage.getItem('displayLanguage') || 'en';
+
+        // Set language selector
+        document.getElementById('languageSelector').value = displayLang;
+
+        // Language selector change
+        document.getElementById('languageSelector').addEventListener('change', (e) => {
+            displayLang = e.target.value;
+            localStorage.setItem('displayLanguage', displayLang);
+            updateUILanguage();
+        });
+
+        // Update UI language
+        function updateUILanguage() {
+            const howToUseBtn = document.querySelector('#howToUseBtn span');
+            const shoppingMallBtn = document.querySelector('#shoppingMallBtn span');
+            const storeTitle = document.getElementById('storeTitle');
+            const koreanStoreText = document.getElementById('koreanStoreText');
+            const localStoreText = document.getElementById('localStoreText');
+
+            howToUseBtn.textContent = buttonTranslations.howToUse[displayLang] || buttonTranslations.howToUse.en;
+            shoppingMallBtn.textContent = buttonTranslations.shoppingMall[displayLang] || buttonTranslations.shoppingMall.en;
+            storeTitle.textContent = buttonTranslations.selectStore[displayLang] || buttonTranslations.selectStore.en;
+            koreanStoreText.textContent = buttonTranslations.koreanStores[displayLang] || buttonTranslations.koreanStores.en;
+            
+            const country = countryNames[currentLang] || countryNames.en;
+            const localStoreTemplate = buttonTranslations.countryStores[displayLang] || buttonTranslations.countryStores.en;
+            localStoreText.textContent = localStoreTemplate.replace('{country}', country);
+        }
+
+        // Welcome animation
         function showWelcomeAnimation() {
             const welcomeText = document.getElementById('welcomeText');
             const buttonsContainer = document.getElementById('buttonsContainer');
             
-            // Set welcome message based on selected language
-            welcomeText.textContent = welcomeMessages[selectedLang] || 'WELCOME';
+            welcomeText.textContent = welcomeMessages[currentLang] || 'WELCOME';
             
-            // Start animation after 1 second
             setTimeout(() => {
                 welcomeText.classList.add('animate');
             }, 1000);
 
-            // Show buttons after welcome animation completes (5s total: 1s delay + 4s animation)
             setTimeout(() => {
                 buttonsContainer.classList.add('show');
             }, 5000);
         }
 
-        // Initialize page
+        // Initialize
         window.addEventListener('load', () => {
             showWelcomeAnimation();
-            translateButtons(); // Translate buttons based on language
+            updateUILanguage();
         });
 
-        // Button translations by language
-        const buttonTranslations = {
-            howToUse: {
-                en: 'How to use',
-                zh: '使用方法',
-                ru: 'Как использовать',
-                uz: 'Qanday foydalanish',
-                si: 'භාවිතා කරන්නේ කෙසේද',
-                mn: 'Хэрхэн хэрэглэх',
-                vi: 'Cách sử dụng',
-                th: 'วิธีใช้งาน',
-                kk: 'Қалай пайдалану',
-                my: 'အသုံးပြုနည်း',
-                ne: 'कसरी प्रयोग गर्ने',
-                ja: '使い方',
-                ko: '사용 방법',
-                km: 'របៀបប្រើ',
-                id: 'Cara menggunakan',
-                tl: 'Paano gamitin'
-            },
-            shoppingMall: {
-                en: 'Shopping mall',
-                zh: '购物中心',
-                ru: 'Торговый центр',
-                uz: 'Savdo markazi',
-                si: 'සාප්පු සංකීර්ණය',
-                mn: 'Худалдааны төв',
-                vi: 'Trung tâm mua sắm',
-                th: 'ศูนย์การค้า',
-                kk: 'Сауда орталығы',
-                my: 'စျေးဝယ်စင်တာ',
-                ne: 'किनमेल मल',
-                ja: 'ショッピングモール',
-                ko: '쇼핑몰',
-                km: 'មជ្ឈមណ្ឌលទិញទំនិញ',
-                id: 'Pusat perbelanjaan',
-                tl: 'Shopping mall'
-            },
-            selectStore: {
-                en: 'Select Stores',
-                zh: '选择商店',
-                ru: 'Выберите магазины',
-                uz: 'Do\'konlarni tanlang',
-                si: 'වෙළඳසැල් තෝරන්න',
-                mn: 'Дэлгүүрүүд сонгох',
-                vi: 'Chọn các cửa hàng',
-                th: 'เลือกร้านค้า',
-                kk: 'Дүкендерді таңдаңыз',
-                my: 'စတိုးများရွေးချယ်ပါ',
-                ne: 'पसलहरू छान्नुहोस्',
-                ja: 'ストアを選択',
-                ko: '스토어 선택',
-                km: 'ជ្រើសរើសហាង',
-                id: 'Pilih Toko',
-                tl: 'Pumili ng Tindahan'
-            },
-            koreanStore: {
-                en: 'Korean Stores',
-                zh: '韩国商店',
-                ru: 'Корейские магазины',
-                uz: 'Koreya do\'konlari',
-                si: 'කොරියානු වෙළඳසැල්',
-                mn: 'Солонгос дэлгүүрүүд',
-                vi: 'Các cửa hàng Hàn Quốc',
-                th: 'ร้านค้าเกาหลี',
-                kk: 'Корей дүкендері',
-                my: 'ကိုရီးယား စတိုးများ',
-                ne: 'कोरियाली पसलहरू',
-                ja: '韓国ストア',
-                ko: '한국 스토어',
-                km: 'ហាងកូរ៉េ',
-                id: 'Toko Korea',
-                tl: 'Korean Stores'
-            },
-            countryStore: {
-                en: 'Stores',
-                zh: '商店',
-                ru: 'Магазины',
-                uz: 'Do\'konlar',
-                si: 'වෙළඳසැල්',
-                mn: 'Дэлгүүрүүд',
-                vi: 'Các cửa hàng',
-                th: 'ร้านค้า',
-                kk: 'Дүкендер',
-                my: 'စတိုးများ',
-                ne: 'पसलहरू',
-                ja: 'ストア',
-                ko: '스토어',
-                km: 'ហាង',
-                id: 'Toko',
-                tl: 'Mga Tindahan'
-            },
-            countryNames: {
-                en: 'UK',
-                zh: '中国',
-                ru: 'Россия',
-                uz: 'O\'zbekiston',
-                si: 'ශ්‍රී ලංකාව',
-                mn: 'Монгол',
-                vi: 'Việt Nam',
-                th: 'ไทย',
-                kk: 'Қазақстан',
-                my: 'မြန်မာ',
-                ne: 'नेपाल',
-                ja: '日本',
-                ko: '한국',
-                km: 'កម្ពុជា',
-                id: 'Indonesia',
-                tl: 'Pilipinas'
-            }
-        };
-
-        // Translate buttons based on selected language
-        function translateButtons() {
-            const howToUseSpan = document.querySelector('#howToUseBtn span');
-            const shoppingMallSpan = document.querySelector('#shoppingMallBtn span');
-            
-            howToUseSpan.textContent = buttonTranslations.howToUse[selectedLang] || buttonTranslations.howToUse.en;
-            shoppingMallSpan.textContent = buttonTranslations.shoppingMall[selectedLang] || buttonTranslations.shoppingMall.en;
-        }
-
-        // Translate store popup
-        function translateStorePopup() {
-            const storeTitle = document.getElementById('storeTitle');
-            const koreanStoreText = document.getElementById('koreanStoreText');
-            const localStoreText = document.getElementById('localStoreText');
-            
-            // Overlay names on logo
-            const overlayKoreanName = document.getElementById('overlayKoreanName');
-            const overlayLocalName = document.getElementById('overlayLocalName');
-
-            const titleText = buttonTranslations.selectStore[selectedLang] || buttonTranslations.selectStore.en;
-            const koreanText = buttonTranslations.koreanStore[selectedLang] || buttonTranslations.koreanStore.en;
-            const countryName = buttonTranslations.countryNames[selectedLang] || buttonTranslations.countryNames.en;
-            const storeWord = buttonTranslations.countryStore[selectedLang] || buttonTranslations.countryStore.en;
-            const localText = `${countryName} ${storeWord}`;
-
-            storeTitle.textContent = titleText;
-            koreanStoreText.textContent = koreanText;
-            localStoreText.textContent = localText;
-            
-            // Set overlay names
-            overlayKoreanName.textContent = koreanText;
-            overlayLocalName.textContent = localText;
-        }
-
-        // Video Popup Controls
+        // Video popup
         const howToUseBtn = document.getElementById('howToUseBtn');
-        const shoppingMallBtn = document.getElementById('shoppingMallBtn');
         const videoPopup = document.getElementById('videoPopup');
         const videoPlayer = document.getElementById('videoPlayer');
         const closeBtn = document.getElementById('closeBtn');
 
-        // Open video popup
         howToUseBtn.addEventListener('click', (e) => {
             e.preventDefault();
             videoPopup.classList.add('active');
             videoPlayer.play();
         });
 
-        // Close video popup (stays on page 3)
         closeBtn.addEventListener('click', () => {
             videoPopup.classList.remove('active');
             videoPlayer.pause();
             videoPlayer.currentTime = 0;
         });
 
-        // Close on background click (stays on page 3)
         videoPopup.addEventListener('click', (e) => {
             if (e.target === videoPopup) {
                 videoPopup.classList.remove('active');
@@ -1054,46 +969,116 @@
             }
         });
 
-        // Close on Escape key (stays on page 3)
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && videoPopup.classList.contains('active')) {
-                videoPopup.classList.remove('active');
-                videoPlayer.pause();
-                videoPlayer.currentTime = 0;
-            }
-        });
+        // Store selection popup
+        const shoppingMallBtn = document.getElementById('shoppingMallBtn');
+        const storePopup = document.getElementById('storePopup');
+        const storeCloseBtn = document.getElementById('storeCloseBtn');
 
-        // Shopping Mall button - Show glass popup
         shoppingMallBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            const storePopup = document.getElementById('storePopup');
-            translateStorePopup(); // Translate before showing
             storePopup.classList.add('active');
         });
 
-        // Close store popup
-        const storeCloseBtn = document.getElementById('storeCloseBtn');
         storeCloseBtn.addEventListener('click', () => {
-            const storePopup = document.getElementById('storePopup');
             storePopup.classList.remove('active');
         });
 
-        // Close store popup on background click
-        const storePopup = document.getElementById('storePopup');
         storePopup.addEventListener('click', (e) => {
             if (e.target === storePopup) {
                 storePopup.classList.remove('active');
             }
         });
 
-        // Close store popup on Escape key - allow back navigation
-        document.addEventListener('keydown', (e) => {
-            const videoPopup = document.getElementById('videoPopup');
-            const storePopup = document.getElementById('storePopup');
+        // Links popup
+        const koreanStoreBtn = document.getElementById('koreanStoreBtn');
+        const localStoreBtn = document.getElementById('localStoreBtn');
+        const linksPopup = document.getElementById('linksPopup');
+        const linksBackBtn = document.getElementById('linksBackBtn');
+        const linksList = document.getElementById('linksList');
+        const linksTitle = document.getElementById('linksTitle');
+
+        // Load stores from backend
+        async function loadStores(storeType) {
+            linksList.innerHTML = '<div class="loading">Loading stores...</div>';
             
+            try {
+                // Backend URL - CHANGE THIS TO YOUR ACTUAL API
+                const apiUrl = `https://api.yoursite.com/stores/${storeType}?lang=${currentLang}`;
+                
+                const response = await fetch(apiUrl);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load stores');
+                }
+                
+                const data = await response.json();
+                
+                // Update logo if provided
+                if (data.logo) {
+                    document.getElementById('linksLogo').src = data.logo;
+                }
+                
+                // Update title
+                linksTitle.textContent = data.name || (storeType === 'korean' ? 'Korean Stores' : `${countryNames[currentLang]} Stores`);
+                
+                // Render links
+                if (data.links && data.links.length > 0) {
+                    linksList.innerHTML = data.links.map((link, index) => `
+                        <a href="${link.url}" target="_blank" class="link-item">
+                            <div class="link-icon">${index + 1}</div>
+                            <div class="link-text">${link.name}</div>
+                            <div class="link-arrow">→</div>
+                        </a>
+                    `).join('');
+                } else {
+                    linksList.innerHTML = '<div class="error">No stores available</div>';
+                }
+                
+            } catch (error) {
+                console.error('Error loading stores:', error);
+                linksList.innerHTML = '<div class="error">Failed to load stores. Please try again.</div>';
+            }
+        }
+
+        // Korean stores button
+        koreanStoreBtn.addEventListener('click', () => {
+            storePopup.classList.remove('active');
+            setTimeout(() => {
+                linksPopup.classList.add('active');
+                loadStores('korean');
+            }, 300);
+        });
+
+        // Local stores button
+        localStoreBtn.addEventListener('click', () => {
+            storePopup.classList.remove('active');
+            setTimeout(() => {
+                linksPopup.classList.add('active');
+                loadStores(currentLang);
+            }, 300);
+        });
+
+        // Back from links
+        linksBackBtn.addEventListener('click', () => {
+            linksPopup.classList.remove('active');
+            setTimeout(() => {
+                storePopup.classList.add('active');
+            }, 400);
+        });
+
+        // Close links popup on background click
+        linksPopup.addEventListener('click', (e) => {
+            if (e.target === linksPopup) {
+                linksPopup.classList.remove('active');
+            }
+        });
+
+        // Keyboard handling
+        document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                if (videoPopup.classList.contains('active')) {
+                if (linksPopup.classList.contains('active')) {
+                    linksPopup.classList.remove('active');
+                } else if (videoPopup.classList.contains('active')) {
                     videoPopup.classList.remove('active');
                     videoPlayer.pause();
                     videoPlayer.currentTime = 0;
@@ -1103,12 +1088,12 @@
             }
         });
 
-        // Handle browser back button - close popups first
+        // Browser back button handling
         window.addEventListener('popstate', (e) => {
-            const videoPopup = document.getElementById('videoPopup');
-            const storePopup = document.getElementById('storePopup');
-            
-            if (videoPopup.classList.contains('active')) {
+            if (linksPopup.classList.contains('active')) {
+                linksPopup.classList.remove('active');
+                history.pushState(null, '', location.href);
+            } else if (videoPopup.classList.contains('active')) {
                 videoPopup.classList.remove('active');
                 videoPlayer.pause();
                 videoPlayer.currentTime = 0;
@@ -1117,18 +1102,6 @@
                 storePopup.classList.remove('active');
                 history.pushState(null, '', location.href);
             }
-        });
-
-        // Korean Store button click
-        document.getElementById('koreanStoreBtn').addEventListener('click', () => {
-            // Add your Korean store link here
-            alert('Korean Store - Coming Soon!');
-        });
-
-        // Local Store button click
-        document.getElementById('localStoreBtn').addEventListener('click', () => {
-            // Add your local store link here
-            alert('Local Store - Coming Soon!');
         });
     </script>
 </body>
