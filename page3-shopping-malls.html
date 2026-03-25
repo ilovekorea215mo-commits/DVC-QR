@@ -215,6 +215,105 @@
             }
         }
 
+        /* Secondary Buttons Container (appears after shopping mall click) */
+        .secondary-buttons {
+            display: none;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            opacity: 0;
+        }
+
+        .secondary-buttons.show {
+            display: flex;
+            animation: buttonsAppear 0.8s ease forwards;
+        }
+
+        /* Gooey Marquee Button Wrapper */
+        .marquee-btn {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            height: 70px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background-color: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .marquee-btn:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+
+        /* Gooey Marquee Text */
+        .marquee_text {
+            position: absolute;
+            min-width: 100%;
+            white-space: nowrap;
+            color: #fefefe;
+            font-weight: 600;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: marqueeScroll 16s infinite linear;
+        }
+
+        @keyframes marqueeScroll {
+            from { 
+                transform: translateX(70%); 
+            }
+            to { 
+                transform: translateX(-70%); 
+            }
+        }
+
+        /* Blur Layer with Gooey Effect */
+        .marquee_blur {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            background-color: black;
+            background-image:
+                linear-gradient(to right, black, 1rem, transparent 50%),
+                linear-gradient(to left, black, 1rem, transparent 50%);
+            filter: contrast(15);
+            pointer-events: none;
+        }
+
+        .marquee_blur .marquee_text {
+            filter: blur(0.07em);
+        }
+
+        /* Clear Layer on Top */
+        .marquee_clear {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            pointer-events: none;
+        }
+
+        /* Mobile responsive for gooey marquee */
+        @media (max-width: 600px) {
+            .marquee-btn {
+                max-width: 280px;
+                height: 60px;
+            }
+
+            .marquee_text {
+                font-size: 15px;
+                letter-spacing: 1.5px;
+            }
+        }
+
         /* UPDATED: Smaller video container */
         .video-container {
             position: relative;
@@ -483,6 +582,29 @@
                     <span>Shopping mall</span>
                 </a>
             </div>
+
+            <!-- Secondary Buttons (show after shopping mall click) -->
+            <div class="secondary-buttons" id="secondaryButtons">
+                <!-- Korean Store Button with Gooey Marquee -->
+                <button class="marquee-btn" id="koreanStoreBtn">
+                    <div class="marquee_blur" aria-hidden="true">
+                        <p class="marquee_text" id="koreanStoreBlur">Korean Store</p>
+                    </div>
+                    <div class="marquee_clear">
+                        <p class="marquee_text" id="koreanStoreText">Korean Store</p>
+                    </div>
+                </button>
+                
+                <!-- Local Store Button with Gooey Marquee -->
+                <button class="marquee-btn" id="localStoreBtn">
+                    <div class="marquee_blur" aria-hidden="true">
+                        <p class="marquee_text" id="localStoreBlur">Sri Lanka Store</p>
+                    </div>
+                    <div class="marquee_clear">
+                        <p class="marquee_text" id="localStoreText">Sri Lanka Store</p>
+                    </div>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -591,6 +713,60 @@
                 km: 'មជ្ឈមណ្ឌលទិញទំនិញ',
                 id: 'Pusat perbelanjaan',
                 tl: 'Shopping mall'
+            },
+            koreanStore: {
+                en: 'Korean Store',
+                zh: '韩国商店',
+                ru: 'Корейский магазин',
+                uz: 'Koreya do\'koni',
+                si: 'කොරියානු වෙළඳසැල',
+                mn: 'Солонгос дэлгүүр',
+                vi: 'Cửa hàng Hàn Quốc',
+                th: 'ร้านค้าเกาหลี',
+                kk: 'Корей дүкені',
+                my: 'ကိုရီးယား စတိုး',
+                ne: 'कोरियाली पसल',
+                ja: '韓国ストア',
+                ko: '한국 스토어',
+                km: 'ហាងកូរ៉េ',
+                id: 'Toko Korea',
+                tl: 'Korean Store'
+            },
+            countryStore: {
+                en: 'Store',
+                zh: '商店',
+                ru: 'Магазин',
+                uz: 'Do\'kon',
+                si: 'වෙළඳසැල',
+                mn: 'Дэлгүүр',
+                vi: 'Cửa hàng',
+                th: 'ร้านค้า',
+                kk: 'Дүкен',
+                my: 'စတိုး',
+                ne: 'पसल',
+                ja: 'ストア',
+                ko: '스토어',
+                km: 'ហាង',
+                id: 'Toko',
+                tl: 'Store'
+            },
+            countryNames: {
+                en: 'UK',
+                zh: '中国',
+                ru: 'Россия',
+                uz: 'O\'zbekiston',
+                si: 'ශ්‍රී ලංකාව',
+                mn: 'Монгол',
+                vi: 'Việt Nam',
+                th: 'ไทย',
+                kk: 'Қазақстан',
+                my: 'မြန်မာ',
+                ne: 'नेपाल',
+                ja: '日本',
+                ko: '한국',
+                km: 'កម្ពុជា',
+                id: 'Indonesia',
+                tl: 'Pilipinas'
             }
         };
 
@@ -601,6 +777,24 @@
             
             howToUseSpan.textContent = buttonTranslations.howToUse[selectedLang] || buttonTranslations.howToUse.en;
             shoppingMallSpan.textContent = buttonTranslations.shoppingMall[selectedLang] || buttonTranslations.shoppingMall.en;
+        }
+
+        // Translate secondary store buttons
+        function translateStoreButtons() {
+            const koreanStoreText = document.getElementById('koreanStoreText');
+            const koreanStoreBlur = document.getElementById('koreanStoreBlur');
+            const localStoreText = document.getElementById('localStoreText');
+            const localStoreBlur = document.getElementById('localStoreBlur');
+
+            const koreanText = buttonTranslations.koreanStore[selectedLang] || buttonTranslations.koreanStore.en;
+            const countryName = buttonTranslations.countryNames[selectedLang] || buttonTranslations.countryNames.en;
+            const storeWord = buttonTranslations.countryStore[selectedLang] || buttonTranslations.countryStore.en;
+            const localText = `${countryName} ${storeWord}`;
+
+            koreanStoreText.textContent = koreanText;
+            koreanStoreBlur.textContent = koreanText;
+            localStoreText.textContent = localText;
+            localStoreBlur.textContent = localText;
         }
 
         // Video Popup Controls
@@ -642,12 +836,30 @@
             }
         });
 
-        // Shopping Mall button (you can add link later)
+        // Shopping Mall button - Show store selection
         shoppingMallBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Add your shopping mall page link here
-            // window.location.href = 'shopping-mall.html';
-            alert('Shopping Mall - Coming Soon!');
+            
+            // Hide primary buttons
+            const buttonsContainer = document.getElementById('buttonsContainer');
+            buttonsContainer.style.display = 'none';
+            
+            // Show secondary store buttons
+            const secondaryButtons = document.getElementById('secondaryButtons');
+            translateStoreButtons(); // Translate before showing
+            secondaryButtons.classList.add('show');
+        });
+
+        // Korean Store button click
+        document.getElementById('koreanStoreBtn').addEventListener('click', () => {
+            // Add your Korean store link here
+            alert('Korean Store - Coming Soon!');
+        });
+
+        // Local Store button click
+        document.getElementById('localStoreBtn').addEventListener('click', () => {
+            // Add your local store link here
+            alert('Local Store - Coming Soon!');
         });
     </script>
 </body>
