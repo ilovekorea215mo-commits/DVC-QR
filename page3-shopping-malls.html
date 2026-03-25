@@ -16,7 +16,6 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-        
             align-items: center;
             background-image: url('images/page3-background.jpg');
             background-size: cover;
@@ -486,82 +485,17 @@
     </div>
 
     <!-- Video Popup Player -->
-<div class="video-popup" id="videoPopup">
-    <div class="video-container">
-        <button class="close-btn" id="closeBtn">×</button>
-        <div class="video-wrapper">
-            <video id="videoPlayer" controls loop>
-                <source src="how-to-use.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+    <div class="video-popup" id="videoPopup">
+        <div class="video-container">
+            <button class="close-btn" id="closeBtn">×</button>
+            <div class="video-wrapper">
+                <video id="videoPlayer" controls loop>
+                    <source src="how-to-use.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </div>
     </div>
-</div>
-```
-
----
-
-## 🎯 **The REAL Problem:**
-
-**Code එක හරි තියෙනවා!** ✅
-
-**So problem එක වෙන්න පුළුවන්:**
-
-### **1. Video file එක GitHub එකේ නැහැ**
-```
-Check: GitHub → Your repo → Root folder
-Is "how-to-use.mp4" there?
-```
-
-### **2. Old file cached**
-```
-Solution: Hard refresh (Ctrl+Shift+R or Cmd+Shift+R)
-```
-
-### **3. Vercel not deployed**
-```
-Check: GitHub → Actions tab
-Recent deploy successful?
-```
-
----
-
-## 🔍 **Debug Steps:**
-
-### **Test 1: Direct video URL**
-```
-Browser address bar එකේ type කරන්න:
-https://your-site-url.vercel.app/how-to-use.mp4
-
-Result?
-A. Video plays/downloads ✅
-B. 404 Not Found ❌
-```
-
-### **Test 2: Console errors**
-```
-F12 → Console tab
-Button click කරනකොට red errors එනවද?
-Copy paste කරන්න මට!
-```
-
-### **Test 3: Network tab**
-```
-F12 → Network tab
-Button click කරන්න
-"how-to-use.mp4" load වෙනවද?
-Status: 200 (success) or 404 (not found)?
-```
-
----
-
-## 📤 **Make Sure:**
-```
-□ Video uploaded to GitHub ROOT folder
-□ File name exactly: how-to-use.mp4 (lowercase, no spaces)
-□ Vercel deployed (check GitHub Actions)
-□ Hard refreshed browser (Ctrl+Shift+R)
-□ Cleared browser cache
 
     <script>
         // Welcome messages by language
