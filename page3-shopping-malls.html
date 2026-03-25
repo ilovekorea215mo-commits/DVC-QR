@@ -254,26 +254,52 @@
             overflow: hidden;
         }
 
-        /* Logo Section - Full Background */
+        /* Logo Section - Full Background LEFT SIDE CUTOFF */
         .store-logo-section {
+            position: absolute;
+            top: 0;
+            left: -50px;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .store-logo-section img {
+            width: 380px;
+            height: auto;
+            filter: brightness(0);
+            margin-left: -30px;
+        }
+
+        /* Store Names Overlay on Logo */
+        .store-names-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            padding-left: 20px;
-            opacity: 0.12;
+            justify-content: center;
+            gap: 15px;
             pointer-events: none;
             z-index: 0;
         }
 
-        .store-logo-section img {
-            width: 240px;
-            height: auto;
-            filter: brightness(0) invert(1);
+        .store-name-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         /* Buttons Section - On Top of Logo */
@@ -364,12 +390,19 @@
             }
 
             .store-logo-section {
-                padding-left: 10px;
-                opacity: 0.08;
+                left: -30px;
+                width: 60%;
+                opacity: 0.06;
             }
 
             .store-logo-section img {
-                width: 180px;
+                width: 280px;
+                margin-left: -20px;
+            }
+
+            .store-name-text {
+                font-size: 13px;
+                letter-spacing: 1.5px;
             }
 
             .store-buttons-section {
@@ -782,6 +815,12 @@
                 <img src="images/vitruvian-logo.png" alt="DVC Logo">
             </div>
             
+            <!-- Store Names Overlay on Logo -->
+            <div class="store-names-overlay">
+                <div class="store-name-text" id="overlayKoreanName">Korean Store</div>
+                <div class="store-name-text" id="overlayLocalName">Sri Lanka Store</div>
+            </div>
+            
             <!-- Buttons Section - Right Side -->
             <div class="store-buttons-section">
                 <h2 class="store-title" id="storeTitle">Select Store</h2>
@@ -985,6 +1024,10 @@
             const storeTitle = document.getElementById('storeTitle');
             const koreanStoreText = document.getElementById('koreanStoreText');
             const localStoreText = document.getElementById('localStoreText');
+            
+            // Overlay names on logo
+            const overlayKoreanName = document.getElementById('overlayKoreanName');
+            const overlayLocalName = document.getElementById('overlayLocalName');
 
             const titleText = buttonTranslations.selectStore[selectedLang] || buttonTranslations.selectStore.en;
             const koreanText = buttonTranslations.koreanStore[selectedLang] || buttonTranslations.koreanStore.en;
@@ -995,6 +1038,10 @@
             storeTitle.textContent = titleText;
             koreanStoreText.textContent = koreanText;
             localStoreText.textContent = localText;
+            
+            // Set overlay names
+            overlayKoreanName.textContent = koreanText;
+            overlayLocalName.textContent = localText;
         }
 
         // Video Popup Controls
