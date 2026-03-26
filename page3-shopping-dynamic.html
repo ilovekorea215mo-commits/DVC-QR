@@ -435,9 +435,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             z-index: 0;
         }
 
@@ -1077,9 +1077,12 @@
                     throw new Error('Store type not found');
                 }
                 
-                // Update logo if provided
+                // Update logo if provided (fallback to default)
+                const logoElement = document.getElementById('linksLogo');
                 if (data.logo) {
-                    document.getElementById('linksLogo').src = data.logo;
+                    logoElement.src = data.logo;
+                } else {
+                    logoElement.src = 'images/vitruvian-logo.png';
                 }
                 
                 // Update title
