@@ -54,10 +54,10 @@
         /* Glass Plate */
         .glass-plate {
             width: 100%;
-            height: 120%;
+            height: 100%;
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px) saturate(90%);
-            -webkit-backdrop-filter: blur(10px) saturate(90%);
+            backdrop-filter: blur(10px) saturate(100%);
+            -webkit-backdrop-filter: blur(10px) saturate(100%);
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -1168,8 +1168,9 @@
         window.addEventListener('load', () => {
             showWelcomeAnimation();
             updateUILanguage();
-            // Push a state so phone back button triggers popstate instead of leaving
-            history.pushState(null, '', location.href);
+            // Push TWO states — first pop triggers popstate, second would navigate away
+            history.pushState({page: 'p3'}, '', location.href);
+            history.pushState({page: 'p3'}, '', location.href);
         });
 
         // Video popup
@@ -1393,28 +1394,25 @@
 
         // Browser back button handling — always show confirm popup before leaving
         window.addEventListener('popstate', (e) => {
+            // Always re-push so next back press is also intercepted
+            history.pushState({page: 'p3'}, '', location.href);
+
             if (linksPopup.classList.contains('active')) {
-                // links popup open — close it, go back to store popup
                 linksPopup.classList.remove('active');
                 setTimeout(() => {
                     storePopup.classList.add('active');
                 }, 300);
-                history.pushState(null, '', location.href);
             } else if (storePopup.classList.contains('active')) {
                 storePopup.classList.remove('active');
-                history.pushState(null, '', location.href);
             } else if (videoPopup.classList.contains('active')) {
                 videoPopup.classList.remove('active');
                 videoPlayer.pause();
                 videoPlayer.currentTime = 0;
-                history.pushState(null, '', location.href);
             } else if (confirmPopup.classList.contains('active')) {
                 confirmPopup.classList.remove('active');
                 confirmCallback = null;
-                history.pushState(null, '', location.href);
             } else {
                 // No popup open — show confirm before going to page 2
-                history.pushState(null, '', location.href);
                 showConfirm(() => {
                     window.location.href = 'page2-language-selection.html';
                 });
