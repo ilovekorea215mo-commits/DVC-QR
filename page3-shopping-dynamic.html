@@ -921,23 +921,14 @@
     <button class="back-button" id="backButton" onclick="goBackWithConfirm()">←</button>
 
     <div class="container">
-        <!-- Title layer ABOVE glass plate — font shape cut, bg image shows through -->
+        <!-- Title text ONLY above glass plate -->
         <svg class="glass-title-cutout" viewBox="0 0 500 55" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <mask id="textMask">
-                    <rect width="500" height="55" fill="white"/>
-                    <text x="250" y="40" text-anchor="middle"
-                        font-family="Georgia, 'Times New Roman', serif"
-                        font-size="38"
-                        font-weight="900"
-                        letter-spacing="4"
-                        fill="black">DA VINCI CODE</text>
-                </mask>
-            </defs>
-            <!-- Glass layer with text holes — bg shows through letters -->
-            <rect width="500" height="55"
-                fill="rgba(255,255,255,0.07)"
-                mask="url(#textMask)"/>
+            <text x="250" y="40" text-anchor="middle"
+                font-family="Georgia, 'Times New Roman', serif"
+                font-size="38"
+                font-weight="900"
+                letter-spacing="4"
+                fill="rgba(255,255,255,0.85)">DA VINCI CODE</text>
         </svg>
 
         <div class="glass-plate">
