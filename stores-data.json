@@ -1,186 +1,139 @@
 {
   "korean": {
     "name": {
-      "en": "Korean Stores",
-      "ko": "한국 스토어",
-      "zh": "韩国商店",
-      "ru": "Корейские магазины",
-      "uz": "Koreya do'konlari",
-      "si": "කොරියානු වෙළඳසැල්",
-      "mn": "Солонгос дэлгүүрүүд",
-      "vi": "Các cửa hàng Hàn Quốc",
-      "th": "ร้านค้าเกาหลี",
-      "kk": "Корей дүкендері",
-      "my": "ကိုရီးယား စတိုးများ",
-      "ne": "कोरियाली पसलहरू",
-      "ja": "韓国ストア",
-      "km": "ហាងកូរ៉េ",
-      "id": "Toko Korea",
-      "tl": "Korean Stores"
+      "en": "Korean Stores"
     },
     "links": [
-      { "name": "Olive Young", "url": "https://www.oliveyoung.com" },
-      { "name": "Innisfree", "url": "https://www.innisfree.com" },
-      { "name": "Etude House", "url": "https://www.etudehouse.com" },
-      { "name": "Laneige", "url": "https://www.laneige.com" },
-      { "name": "Sulwhasoo", "url": "https://www.sulwhasoo.com" }
+      {
+        "name": "Naver",
+        "url": "https://brand.naver.com/age20s/products/8415518013?n_media=27758&n_query=%EC%84%A0%EB%B0%A4AGE&n_rank=1&n_ad_group=grp-a001-01-000000050448230&n_ad=nad-a001-01-000000486137383&n_campaign_type=1&n_ad_group_type=1&n_match=2&NaPm=ct%3Dmn2x9gxs%7Cci%3DER073db0ac-2692-11f1-bed7-023331a7a652%7Ctr%3Dsa%7Chk%3D87aa5b9061930fe9548fd80bd35db1f8cd97e958%7Cnacn%3DpHO0B0APszKs"
+      },
+      {
+        "name": "Coupang",
+        "url": "https://www.coupang.com/vp/products/8286456004?itemId=26570382575&vendorItemId=87552264787&sourceType=srp_product_ads&clickEventId=edd293b0-2691-11f1-9b2c-d8c815ffca1b&korePlacement=15&koreSubPlacement=1&clickEventId=edd293b0-2691-11f1-9b2c-d8c815ffca1b&korePlacement=15&koreSubPlacement=1&traceId=mn2x8qz3"
+      }
     ]
   },
   "en": {
     "name": {
-      "en": "UK Stores",
-      "ko": "영국 스토어",
-      "zh": "英国商店",
-      "ru": "Британские магазины",
-      "uz": "Britaniya do'konlari",
-      "si": "එක්සත් රාජධානිය වෙළඳසැල්",
-      "mn": "Их Британийн дэлгүүрүүд",
-      "vi": "Các cửa hàng Vương quốc Anh",
-      "th": "ร้านค้าสหราชอาณาจักร",
-      "kk": "Ұлыбритания дүкендері",
-      "my": "ယူကေ စတိုးများ",
-      "ne": "युके पसलहरू",
-      "ja": "イギリスストア",
-      "km": "ហាងចក្រភពអង់គ្លេស",
-      "id": "Toko Inggris",
-      "tl": "UK Stores"
+      "en": "UK Stores"
     },
-    "links": [
-      { "name": "Boots", "url": "https://www.boots.com" },
-      { "name": "Superdrug", "url": "https://www.superdrug.com" },
-      { "name": "Lookfantastic", "url": "https://www.lookfantastic.com" }
-    ]
+    "message": {
+      "en": ""
+    }
   },
   "ru": {
     "name": {
-      "en": "Russia Stores",
-      "ko": "러시아 스토어",
-      "zh": "俄罗斯商店",
-      "ru": "Российские магазины",
-      "uz": "Rossiya do'konlari",
-      "si": "රුසියාව වෙළඳසැල්",
-      "mn": "Оросын дэлгүүрүүд",
-      "vi": "Các cửa hàng Nga",
-      "th": "ร้านค้ารัสเซีย",
-      "kk": "Ресей дүкендері",
-      "my": "ရုရှား စတိုးများ",
-      "ne": "रूस पसलहरू",
-      "ja": "ロシアストア",
-      "km": "ហាងរុស្ស៊ី",
-      "id": "Toko Rusia",
-      "tl": "Russia Stores"
+      "en": "Russia Stores"
     },
-    "links": [
-      { "name": "Л'Этуаль", "url": "https://www.letu.ru" },
-      { "name": "Рив Гош", "url": "https://www.rivegauche.ru" },
-      { "name": "Золотое Яблоко", "url": "https://www.goldapple.ru" }
-    ]
+    "message": {
+      "en": "Unfortunately, cosmetics are not currently available for sale in Russian stores.",
+      "ru": ""
+    }
   },
   "si": {
     "name": {
-      "en": "Sri Lanka Stores",
-      "ko": "스리랑카 스토어",
-      "zh": "斯里兰卡商店",
-      "ru": "Магазины Шри-Ланки",
-      "uz": "Shri-Lanka do'konlari",
-      "si": "ශ්‍රී ලංකාව වෙළඳසැල්",
-      "mn": "Шри Ланкагийн дэлгүүрүүд",
-      "vi": "Các cửa hàng Sri Lanka",
-      "th": "ร้านค้าศรีลังกา",
-      "kk": "Шри-Ланка дүкендері",
-      "my": "သီရိလင်္ကာ စတိုးများ",
-      "ne": "श्रीलङ्का पसलहरू",
-      "ja": "スリランカストア",
-      "km": "ហាងស្រីលង្កា",
-      "id": "Toko Sri Lanka",
-      "tl": "Sri Lanka Stores"
+      "en": "Sri Lanka Stores"
     },
-    "links": [
-      { "name": "Keells Super", "url": "https://www.keellssuper.com" },
-      { "name": "Arpico", "url": "https://www.arpico.com" },
-      { "name": "Softlogic", "url": "https://www.softlogic.lk" }
-    ]
+    "message": {
+      "en": "Unfortunately, cosmetics are not currently available for sale in Sri Lanka stores.",
+      "si": ""
+    }
   },
   "zh": {
     "name": {
-      "en": "China Stores",
-      "ko": "중국 스토어",
-      "zh": "中国商店",
-      "ru": "Китайские магазины",
-      "uz": "Xitoy do'konlari",
-      "si": "චීන වෙළඳසැල්",
-      "mn": "Хятадын дэлгүүрүүд",
-      "vi": "Các cửa hàng Trung Quốc",
-      "th": "ร้านค้าจีน",
-      "kk": "Қытай дүкендері",
-      "my": "တရုတ် စတိုးများ",
-      "ne": "चीन पसलहरू",
-      "ja": "中国ストア",
-      "km": "ហាងចិន",
-      "id": "Toko Tiongkok",
-      "tl": "China Stores"
+      "en": "China Stores"
     },
     "message": {
-      "en": "Unfortunately, cosmetics are not currently available for sale in China stores.",
-      "ko": "죄송합니다. 현재 중국 매장에서는 화장품을 판매하지 않습니다.",
-      "zh": "很抱歉，中国商店目前不提供化妆品销售。",
-      "ru": "К сожалению, в китайских магазинах косметика в настоящее время не продается.",
-      "uz": "Afsuski, hozirda Xitoy do'konlarida kosmetika sotilmaydi.",
-      "si": "අවාසනාවකට, චීන වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත.",
-      "mn": "Харамсалтай нь, Хятадын дэлгүүрүүдэд гоо сайхны бүтээгдэхүүн одоогоор зарагддаггүй.",
-      "vi": "Rất tiếc, mỹ phẩm hiện không có sẵn để bán tại các cửa hàng Trung Quốc.",
-      "th": "ขออภัย เครื่องสำอางไม่มีจำหน่ายในร้านค้าจีนในขณะนี้",
-      "kk": "Өкінішке орай, Қытай дүкендерінде косметика қазір сатылмайды.",
-      "my": "ဝမ်းနည်းပါတယ်၊ တရုတ်စတိုးများတွင် အလှကုန်ပစ္စည်းများ လောလောဆယ် ရောင်းချမထားပါ။",
-      "ne": "दुर्भाग्यवश, चीन पसलहरूमा हाल सौन्दर्य प्रसाधन बिक्रीको लागि उपलब्ध छैन।",
-      "ja": "申し訳ありませんが、中国の店舗では現在化粧品の販売は行っておりません。",
-      "km": "សូមអភ័យទោស គ្រឿងសំអាងមិនមានលក់នៅហាងចិនទេនៅពេលនេះ។",
-      "id": "Maaf, kosmetik saat ini tidak tersedia untuk dijual di toko Tiongkok.",
-      "tl": "Paumanhin, ang mga cosmetics ay kasalukuyang hindi available para sa pagbebenta sa mga tindahan ng China."
+      "en": ""
     }
   },
   "uz": {
-    "name": { "en": "Uzbekistan Stores", "uz": "O'zbekiston do'konlari", "si": "උස්බෙකිස්ථාන වෙළඳසැල්" },
-    "message": { "en": "Unfortunately, cosmetics are not currently available for sale in Uzbekistan stores.", "uz": "Afsuski, hozirda O'zbekiston do'konlarida kosmetika sotilmaydi.", "si": "අවාසනාවකට, උස්බෙකිස්ථාන වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත." }
+    "name": {
+      "en": "Uzbekistan Stores"
+    },
+    "message": {
+      "en": ""
+    }
   },
   "mn": {
-    "name": { "en": "Mongolia Stores", "mn": "Монголын дэлгүүрүүд", "si": "මොන්ගෝලියා වෙළඳසැල්" },
-    "message": { "en": "Unfortunately, cosmetics are not currently available for sale in Mongolia stores.", "mn": "Харамсалтай нь, Монголын дэлгүүрүүдэд гоо сайхны бүтээгдэхүүн одоогоор зарагддаггүй.", "si": "අවාසනාවකට, මොන්ගෝලියා වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත." }
+    "name": {
+      "en": "Mongolia Stores"
+    },
+    "message": {
+      "en": ""
+    }
   },
   "vi": {
-    "name": { "en": "Vietnam Stores", "vi": "Các cửa hàng Việt Nam", "si": "වියට්නාම වෙළඳසැල්" },
-    "message": { "en": "Unfortunately, cosmetics are not currently available for sale in Vietnam stores.", "vi": "Rất tiếc, mỹ phẩm hiện không có sẵn để bán tại các cửa hàng Việt Nam.", "si": "අවාසනාවකට, වියට්නාම වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත." }
+    "name": {
+      "en": "Vietnam Stores"
+    },
+    "message": {
+      "en": ""
+    }
   },
   "th": {
-    "name": { "en": "Thailand Stores", "th": "ร้านค้าไทย", "si": "තායිලන්ත වෙළඳසැල්" },
-    "message": { "en": "Unfortunately, cosmetics are not currently available for sale in Thailand stores.", "th": "ขออภัย เครื่องสำอางไม่มีจำหน่ายในร้านค้าไทยในขณะนี้", "si": "අවාසනාවකට, තායිලන්ත වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත." }
+    "name": {
+      "en": "Thailand Stores"
+    },
+    "message": {
+      "en": ""
+    }
   },
   "kk": {
-    "name": { "en": "Kazakhstan Stores", "kk": "Қазақстан දූකෙන්දෙරි", "si": "කසකස්තාන වෙළඳසැල්" },
-    "message": { "en": "Unfortunately, cosmetics are not currently available for sale in Kazakhstan stores.", "kk": "Өкінішке орай, Қазақстан дүকендерінде косметика қазір сатылмайды.", "si": "අවාසනාවකට, කසකස්තාන වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත." }
+    "name": {
+      "en": "Kazakhstan Stores"
+    },
+    "message": {
+      "en": ""
+    }
   },
   "my": {
-    "name": { "en": "Myanmar Stores", "my": "မြန်မာ စတိုးများ", "si": "මියන්මාර වෙළඳසැල්" },
-    "message": { "en": "Unfortunately, cosmetics are not currently available for sale in Myanmar stores.", "my": "ဝမ်းနည်းပါတယ်၊ မြန်မာစတိုးများတွင် အလှကုန်ပစ္စည်းများ လောလောဆယ် ရောင်းချမထားပါ။", "si": "අවාසනාවකට, මියන්මාර වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත." }
+    "name": {
+      "en": "Myanmar Stores"
+    },
+    "message": {
+      "en": ""
+    }
   },
   "ne": {
-    "name": { "en": "Nepal Stores", "ne": "नेपाल पसलहरू", "si": "නේපාල වෙළඳසැල්" },
-    "message": { "en": "Unfortunately, cosmetics are not currently available for sale in Nepal stores.", "ne": "दुर्भाग्यवश, नेपाल पसलहरूमा हाल सौन्दर्य प्रसाधन बिक्रीको लागि उपलब्ध छैन।", "si": "අවාසනාවකට, නේපාල වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත." }
+    "name": {
+      "en": "Nepal Stores"
+    },
+    "message": {
+      "en": ""
+    }
   },
   "ja": {
-    "name": { "en": "Japan Stores", "ja": "日本ストア", "si": "ජපාන වෙළඳසැල්" },
-    "message": { "en": "Unfortunately, cosmetics are not currently available for sale in Japan stores.", "ja": "申し訳ありませんが、日本の店舗では現在化粧品の販売は行っておりません。", "si": "අවාසනාවකට, ජපාන වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත." }
+    "name": {
+      "en": "Japan Stores"
+    },
+    "message": {
+      "en": ""
+    }
   },
   "km": {
-    "name": { "en": "Cambodia Stores", "km": "ហាងកម្ពុជា", "si": "කාම්බෝජ වෙළඳසැල්" },
-    "message": { "en": "Unfortunately, cosmetics are not currently available for sale in Cambodia stores.", "km": "សូមអភ័យទោស គ្រឿងសំអាងមិនមានលក់នៅហាងកម្ពុជាទេនៅពេលនេះ។", "si": "අවාසනාවකට, කාම්බෝජ වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත." }
+    "name": {
+      "en": "Cambodia Stores"
+    },
+    "message": {
+      "en": ""
+    }
   },
   "id": {
-    "name": { "en": "Indonesia Stores", "id": "Toko Indonesia", "si": "ඉන්දුනීසියා වෙළඳසැල්" },
-    "message": { "en": "Unfortunately, cosmetics are not currently available for sale in Indonesia stores.", "id": "Maaf, kosmetik saat ini tidak tersedia untuk dijual di toko Indonesia.", "si": "අවාසනාවකට, ඉන්දුනීසියා වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත." }
+    "name": {
+      "en": "Indonesia Stores"
+    },
+    "message": {
+      "en": ""
+    }
   },
   "tl": {
-    "name": { "en": "Philippines Stores", "tl": "Philippines Stores", "si": "පිලිපීන වෙළඳසැල්" },
-    "message": { "en": "Unfortunately, cosmetics are not currently available for sale in Philippines stores.", "tl": "Paumanhin, ang mga cosmetics ay kasalukuyang hindi available para sa pagbebenta sa mga tindahan ng Philippines.", "si": "අවාසනාවකට, පිලිපීන වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත." }
+    "name": {
+      "en": "Philippines Stores"
+    },
+    "message": {
+      "en": ""
+    }
   }
 }
