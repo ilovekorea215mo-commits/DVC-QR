@@ -1197,6 +1197,26 @@
             }
         });
 
+        // Confirmation messages in all languages
+        const confirmMessages = {
+            en: "Do you want to select a different language?",
+            ko: "다른 언어를 선택하시겠습니까?",
+            zh: "您想选择其他语言吗？",
+            ru: "Вы хотите выбрать другой язык?",
+            uz: "Boshqa tilni tanlashni xohlaysizmi?",
+            si: "ඔබට වෙනත් භාෂාවක් තෝරා ගැනීමට අවශ්‍යද?",
+            mn: "Та өөр хэл сонгохыг хүсч байна уу?",
+            vi: "Bạn có muốn chọn ngôn ngữ khác không?",
+            th: "คุณต้องการเลือกภาษาอื่นหรือไม่?",
+            kk: "Басқа тілді таңдағыңыз келе ме?",
+            my: "သင်အခြားဘာသာစကားကိုရွေးချယ်လိုပါသလား?",
+            ne: "के तपाईं अर्को भाषा छनोट गर्न चाहनुहुन्छ?",
+            ja: "別の言語を選択しますか？",
+            km: "តើអ្នកចង់ជ្រើសរើសភាសាផ្សេងទៀតទេ?",
+            id: "Apakah Anda ingin memilih bahasa lain?",
+            tl: "Gusto mo bang pumili ng ibang wika?"
+        };
+
         // Browser back button handling
         window.addEventListener('popstate', (e) => {
             // Check if any popup is open
@@ -1215,8 +1235,13 @@
                 videoPlayer.currentTime = 0;
                 history.pushState(null, '', location.href);
             } else {
-                // All popups closed, allow navigation to page 2
-                window.location.href = 'page2-language-selection.html';
+                // All popups closed, show confirmation before going to page 2
+                const message = confirmMessages[currentLang] || confirmMessages.en;
+                if (confirm(message)) {
+                    window.location.href = 'page2-language-selection.html';
+                } else {
+                    history.pushState(null, '', location.href);
+                }
             }
         });
     </script>
