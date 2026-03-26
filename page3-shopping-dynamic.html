@@ -1190,17 +1190,24 @@
 
         // Browser back button handling
         window.addEventListener('popstate', (e) => {
+            // Check if any popup is open
             if (linksPopup.classList.contains('active')) {
+                // Close links popup
                 linksPopup.classList.remove('active');
                 history.pushState(null, '', location.href);
+            } else if (storePopup.classList.contains('active')) {
+                // Close store selection popup
+                storePopup.classList.remove('active');
+                history.pushState(null, '', location.href);
             } else if (videoPopup.classList.contains('active')) {
+                // Close video popup
                 videoPopup.classList.remove('active');
                 videoPlayer.pause();
                 videoPlayer.currentTime = 0;
                 history.pushState(null, '', location.href);
-            } else if (storePopup.classList.contains('active')) {
-                storePopup.classList.remove('active');
-                history.pushState(null, '', location.href);
+            } else {
+                // All popups closed, allow navigation to page 2
+                window.location.href = 'page2-language-selection.html';
             }
         });
     </script>
