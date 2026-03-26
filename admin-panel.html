@@ -62,11 +62,22 @@
         .no-links { text-align: center; padding: 20px; color: #999; font-style: italic; }
         .btn-group { display: flex; gap: 10px; }
         @media (max-width: 768px) {
-            .link-item { flex-direction: column; }
-            .link-item input { width: 100%; }
+            .container { padding: 20px; }
+            h1 { font-size: 24px; }
+            .header { flex-direction: column; gap: 15px; align-items: flex-start; }
+            .lang-switch { width: 100%; justify-content: center; }
+            .upload-section { padding: 15px; }
             .stats { flex-direction: column; }
+            .tabs { overflow-x: auto; flex-wrap: nowrap; }
+            .link-item { flex-direction: column; }
+            .link-item input { width: 100% !important; flex: none !important; }
             .message-row { flex-direction: column; }
             .lang-label { min-width: auto; width: 100%; }
+            .btn-group { flex-direction: column; }
+            .add-link-btn, .add-msg-btn { width: 100%; margin: 0 0 10px 0; }
+            .country-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .save-btn { width: 100%; }
+            .json-view { font-size: 11px; }
         }
     </style>
 </head>
