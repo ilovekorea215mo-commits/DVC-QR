@@ -1152,6 +1152,7 @@
             storePopup.classList.remove('active');
             setTimeout(() => {
                 linksPopup.classList.add('active');
+                history.pushState(null, '', location.href);
                 loadStores('korean');
             }, 300);
         });
@@ -1161,6 +1162,7 @@
             storePopup.classList.remove('active');
             setTimeout(() => {
                 linksPopup.classList.add('active');
+                history.pushState(null, '', location.href);
                 loadStores(currentLang);
             }, 300);
         });
