@@ -1,6 +1,5 @@
 {
   "korean": {
-    "logo": "images/korean-logo.png",
     "name": {
       "en": "Korean Stores",
       "ko": "한국 스토어",
@@ -11,32 +10,31 @@
       {
         "name": "Olive Young",
         "url": "https://www.oliveyoung.com",
-        "logo": "https://cdn-icons-png.flaticon.com/128/2234/2234742.png"
+        "logo": "https://www.oliveyoung.com/pc-static-root/image/comm/h1_logo.png"
       },
       {
         "name": "Innisfree",
         "url": "https://www.innisfree.com",
-        "logo": "https://cdn-icons-png.flaticon.com/128/3050/3050155.png"
+        "logo": "https://www.innisfree.com/kr/ko/resources/images/logo.svg"
       },
       {
         "name": "Etude House",
         "url": "https://www.etudehouse.com",
-        "logo": "https://cdn-icons-png.flaticon.com/128/2548/2548482.png"
+        "logo": "https://www.etudehouse.com/images/logo.png"
       },
       {
         "name": "Laneige",
         "url": "https://www.laneige.com",
-        "logo": "https://cdn-icons-png.flaticon.com/128/2917/2917995.png"
+        "logo": "https://www.laneige.com/sg/en/assets/images/logo.svg"
       },
       {
         "name": "Sulwhasoo",
         "url": "https://www.sulwhasoo.com",
-        "logo": "https://cdn-icons-png.flaticon.com/128/3448/3448636.png"
+        "logo": "https://www.sulwhasoo.com/kr/ko/assets/images/logo.svg"
       }
     ]
   },
   "si": {
-    "logo": "images/srilanka-logo.png",
     "name": {
       "en": "Sri Lanka Stores",
       "ko": "스리랑카 스토어",
@@ -46,20 +44,22 @@
     "links": [
       {
         "name": "Keells Super",
-        "url": "https://www.keellssuper.com"
+        "url": "https://www.keellssuper.com",
+        "logo": "https://www.keellssuper.com/media/logo/default/keells_logo.png"
       },
       {
         "name": "Arpico",
-        "url": "https://www.arpico.com"
+        "url": "https://www.arpico.com",
+        "logo": "https://www.arpico.com/skin/frontend/arpico/default/images/logo.png"
       },
       {
         "name": "Softlogic",
-        "url": "https://www.softlogic.lk"
+        "url": "https://www.softlogic.lk",
+        "logo": "https://www.softlogic.lk/images/logo.png"
       }
     ]
   },
   "en": {
-    "logo": "images/uk-logo.png",
     "name": {
       "en": "UK Stores",
       "ko": "영국 스토어",
@@ -69,20 +69,22 @@
     "links": [
       {
         "name": "Boots",
-        "url": "https://www.boots.com"
+        "url": "https://www.boots.com",
+        "logo": "https://www.boots.com/wcsstore/eBootsStorefrontAssetStore/images/Nav-Imagery/boots-logo.svg"
       },
       {
         "name": "Superdrug",
-        "url": "https://www.superdrug.com"
+        "url": "https://www.superdrug.com",
+        "logo": "https://www.superdrug.com/medias/superdrug-logo.svg"
       },
       {
         "name": "Lookfantastic",
-        "url": "https://www.lookfantastic.com"
+        "url": "https://www.lookfantastic.com",
+        "logo": "https://www.lookfantastic.com/images/lookfantastic-logo.png"
       }
     ]
   },
   "ru": {
-    "logo": "images/russia-logo.png",
     "name": {
       "en": "Russia Stores",
       "ko": "러시아 스토어",
@@ -92,15 +94,18 @@
     "links": [
       {
         "name": "Л'Этуаль",
-        "url": "https://www.letu.ru"
+        "url": "https://www.letu.ru",
+        "logo": "https://www.letu.ru/common/img/logo.svg"
       },
       {
         "name": "Рив Гош",
-        "url": "https://www.rivegauche.ru"
+        "url": "https://www.rivegauche.ru",
+        "logo": "https://www.rivegauche.ru/local/templates/rg/assets/img/logo.svg"
       },
       {
         "name": "Золотое Яблоко",
-        "url": "https://www.goldapple.ru"
+        "url": "https://www.goldapple.ru",
+        "logo": "https://www.goldapple.ru/media/logo.svg"
       }
     ]
   }
