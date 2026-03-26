@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVC 관리자 패널</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        h1 { color: #333; font-size: 32px; }
+        .lang-switch { display: flex; gap: 10px; }
+        .lang-btn { padding: 8px 16px; background: #f5f5f5; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .lang-btn.active { background: #667eea; color: white; }
+        .lang-btn:hover { background: #e0e0e0; }
+        .lang-btn.active:hover { background: #5568d3; }
+        .subtitle { color: #666; margin-bottom: 30px; font-size: 14px; }
+        .tabs { display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid #eee; flex-wrap: wrap; }
+        .tab { padding: 12px 24px; background: #f5f5f5; border: none; border-radius: 8px 8px 0 0; cursor: pointer; font-size: 16px; font-weight: 600; transition: all 0.3s; }
+        .tab:hover { background: #e0e0e0; }
+        .tab.active { background: #667eea; color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .country-card { background: #f8f9fa; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #667eea; }
+        .country-card.has-message { border-left-color: #ffc107; }
+        .country-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .country-name { font-size: 20px; font-weight: 700; color: #333; }
+        .country-code { background: #667eea; color: white; padding: 4px 12px; border-radius: 6px; font-size: 12px; margin-left: 10px; }
+        .add-link-btn, .add-msg-btn { padding: 8px 16px; background: #4CAF50; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px; margin-right: 10px; }
+        .add-link-btn:hover, .add-msg-btn:hover { background: #45a049; }
+        .add-msg-btn { background: #FF9800; }
+        .add-msg-btn:hover { background: #F57C00; }
+        .links-list { margin-top: 15px; }
+        .link-item { background: white; padding: 15px; border-radius: 8px; margin-bottom: 10px; display: flex; gap: 10px; align-items: center; }
+        .link-item input { padding: 10px 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s; }
+        .link-item input:focus { border-color: #667eea; outline: none; }
+        .link-item input[type="text"]:first-child { flex: 1; }
+        .link-item input[type="text"]:last-of-type { flex: 2; }
+        .delete-btn { padding: 8px 16px; background: #f44336; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; white-space: nowrap; }
+        .delete-btn:hover { background: #da190b; }
+        .save-btn { padding: 15px 40px; background: #667eea; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: 700; cursor: pointer; margin-top: 30px; }
+        .save-btn:hover { background: #5568d3; }
+        .message-section { background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin-top: 15px; }
+        .message-row { display: flex; gap: 10px; margin-bottom: 15px; align-items: start; }
+        .message-row:last-child { margin-bottom: 0; }
+        .lang-label { min-width: 100px; padding: 10px; background: #856404; color: white; border-radius: 6px; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+        .message-row textarea { flex: 1; padding: 10px; border: 2px solid #ddd; border-radius: 6px; font-size: 14px; font-family: inherit; resize: vertical; min-height: 60px; }
+        .message-row textarea:focus { border-color: #ffc107; outline: none; }
+        .json-view { background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px; overflow-x: auto; max-height: 600px; overflow-y: auto; }
+        .json-view pre { margin: 0; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.5; }
+        .copy-btn { padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; margin-bottom: 15px; }
+        .copy-btn:hover { background: #45a049; }
+        .success { background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #28a745; font-weight: 600; }
+        .upload-section { background: #e7f3ff; padding: 20px; border-radius: 8px; margin-bottom: 30px; border-left: 4px solid #2196F3; }
+        .upload-btn { padding: 10px 20px; background: #2196F3; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        .upload-btn:hover { background: #0b7dda; }
+        .stats { display: flex; gap: 20px; margin-bottom: 30px; }
+        .stat-card { flex: 1; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 12px; text-align: center; }
+        .stat-number { font-size: 32px; font-weight: 700; margin-bottom: 5px; }
+        .stat-label { font-size: 14px; opacity: 0.9; }
+        .no-links { text-align: center; padding: 20px; color: #999; font-style: italic; }
+        .btn-group { display: flex; gap: 10px; }
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            h1 { font-size: 24px; }
+            .header { flex-direction: column; gap: 15px; align-items: flex-start; }
+            .lang-switch { width: 100%; justify-content: center; }
+            .upload-section { padding: 15px; }
+            .stats { flex-direction: column; }
+            .tabs { overflow-x: auto; flex-wrap: nowrap; }
+            .link-item { flex-direction: column; }
+            .link-item input { width: 100% !important; flex: none !important; }
+            .message-row { flex-direction: column; }
+            .lang-label { min-width: auto; width: 100%; }
+            .btn-group { flex-direction: column; }
+            .add-link-btn, .add-msg-btn { width: 100%; margin: 0 0 10px 0; }
+            .country-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .save-btn { width: 100%; }
+            .json-view { font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 id="pageTitle">🛍️ DVC 스토어 관리자</h1>
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="switchLang('ko')">한국어</button>
+                <button class="lang-btn" onclick="switchLang('en')">English</button>
+            </div>
+        </div>
+        <p class="subtitle" id="pageSubtitle">모든 국가의 매장 관리</p>
+
+        <div class="upload-section">
+            <strong id="uploadLabel">📤 기존 데이터 불러오기:</strong>
+            <input type="file" id="fileInput" accept=".json" style="margin: 10px 0; display: block;">
+            <button class="upload-btn" onclick="loadFile()" id="loadBtn">JSON 파일 불러오기</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card"><div class="stat-number" id="totalCountries">16</div><div class="stat-label" id="countriesLabel">국가</div></div>
+            <div class="stat-card"><div class="stat-number" id="totalLinks">0</div><div class="stat-label" id="linksLabel">총 링크</div></div>
+            <div class="stat-card"><div class="stat-number" id="countriesWithMessages">0</div><div class="stat-label" id="messagesLabel">메시지</div></div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('edit')" id="editTabBtn">✏️ 스토어 편집</button>
+            <button class="tab" onclick="showTab('json')" id="jsonTabBtn">📄 JSON 보기</button>
+        </div>
+
+        <div id="edit-tab" class="tab-content active">
+            <div id="countries-container"></div>
+            <button class="save-btn" onclick="saveData()" id="saveBtn">💾 저장 및 다운로드</button>
+        </div>
+
+        <div id="json-tab" class="tab-content">
+            <button class="copy-btn" onclick="copyJSON()" id="copyBtn">📋 JSON 복사</button>
+            <div class="json-view"><pre id="json-display"></pre></div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            ko: {
+                pageTitle: '🛍️ DVC 스토어 관리자',
+                pageSubtitle: '모든 국가의 매장 관리',
+                uploadLabel: '📤 기존 데이터 불러오기:',
+                loadBtn: 'JSON 파일 불러오기',
+                countriesLabel: '국가',
+                linksLabel: '총 링크',
+                messagesLabel: '메시지',
+                editTabBtn: '✏️ 스토어 편집',
+                jsonTabBtn: '📄 JSON 보기',
+                saveBtn: '💾 저장 및 다운로드',
+                copyBtn: '📋 JSON 복사',
+                addLink: '+ 링크 추가',
+                addMessage: '+ 메시지 추가',
+                noLinks: '링크가 없습니다',
+                delete: '🗑️',
+                downloaded: '✅ 다운로드 완료! GitHub에 업로드하세요',
+                copied: '✅ 복사 완료!',
+                loaded: '✅ 불러오기 완료!',
+                selectFile: '파일을 선택하세요',
+                errorLoading: '오류: ',
+                stores: {
+                    korean: '한국 스토어',
+                    en: '영국 스토어',
+                    ru: '러시아 스토어',
+                    si: '스리랑카 스토어',
+                    zh: '중국 스토어',
+                    uz: '우즈베키스탄 스토어',
+                    mn: '몽골 스토어',
+                    vi: '베트남 스토어',
+                    th: '태국 스토어',
+                    kk: '카자흐스탄 스토어',
+                    my: '미얀마 스토어',
+                    ne: '네팔 스토어',
+                    ja: '일본 스토어',
+                    km: '캄보디아 스토어',
+                    id: '인도네시아 스토어',
+                    tl: '필리핀 스토어'
+                }
+            },
+            en: {
+                pageTitle: '🛍️ DVC Store Manager',
+                pageSubtitle: 'Manage stores for all countries',
+                uploadLabel: '📤 Load Existing Data:',
+                loadBtn: 'Load JSON File',
+                countriesLabel: 'Countries',
+                linksLabel: 'Total Links',
+                messagesLabel: 'Messages',
+                editTabBtn: '✏️ Edit Stores',
+                jsonTabBtn: '📄 View JSON',
+                saveBtn: '💾 Save & Download',
+                copyBtn: '📋 Copy JSON',
+                addLink: '+ Add Link',
+                addMessage: '+ Add Message',
+                noLinks: 'No links yet',
+                delete: '🗑️',
+                downloaded: '✅ Downloaded! Upload to GitHub',
+                copied: '✅ Copied!',
+                loaded: '✅ Loaded!',
+                selectFile: 'Select a file',
+                errorLoading: 'Error: ',
+                stores: {
+                    korean: 'Korean Stores',
+                    en: 'UK Stores',
+                    ru: 'Russia Stores',
+                    si: 'Sri Lanka Stores',
+                    zh: 'China Stores',
+                    uz: 'Uzbekistan Stores',
+                    mn: 'Mongolia Stores',
+                    vi: 'Vietnam Stores',
+                    th: 'Thailand Stores',
+                    kk: 'Kazakhstan Stores',
+                    my: 'Myanmar Stores',
+                    ne: 'Nepal Stores',
+                    ja: 'Japan Stores',
+                    km: 'Cambodia Stores',
+                    id: 'Indonesia Stores',
+                    tl: 'Philippines Stores'
+                }
+            }
+        };
+
+        const countryLanguages = {
+            korean: {code: 'ko', name: '한국어'},
+            en: {code: 'en', name: 'English'},
+            ru: {code: 'ru', name: 'Русский'},
+            si: {code: 'si', name: 'සිංහල'},
+            zh: {code: 'zh', name: '中文'},
+            uz: {code: 'uz', name: 'Oʻzbekcha'},
+            mn: {code: 'mn', name: 'Монгол'},
+            vi: {code: 'vi', name: 'Tiếng Việt'},
+            th: {code: 'th', name: 'ไทย'},
+            kk: {code: 'kk', name: 'Қазақша'},
+            my: {code: 'my', name: 'မြန်မာ'},
+            ne: {code: 'ne', name: 'नेपाली'},
+            ja: {code: 'ja', name: '日本語'},
+            km: {code: 'km', name: 'ខ្មែរ'},
+            id: {code: 'id', name: 'Bahasa'},
+            tl: {code: 'tl', name: 'Filipino'}
+        };
+
+        let currentLang = 'ko';
+        let storesData = {};
+
+        async function loadInitialData() {
+            try {
+                const r = await fetch('stores-data.json');
+                if (r.ok) storesData = await r.json();
+                else storesData = getDefaultData();
+            } catch(e) {
+                storesData = getDefaultData();
+            }
+            renderCountries(); updateStats();
+        }
+
+        function getDefaultData() {
+            const defaults = {"korean":{"name":{"en":"Korean Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Korean Stores.","ko":"죄송합니다. 현재 한국 매장에서는 화장품을 판매하지 않습니다."}},"en":{"name":{"en":"UK Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in UK Stores.","en":"Unfortunately, cosmetics are not currently available for sale in UK Stores."}},"ru":{"name":{"en":"Russia Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Russia Stores.","ru":"К сожалению, в российских магазинах косметика в настоящее время не продается."}},"si":{"name":{"en":"Sri Lanka Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Sri Lanka Stores.","si":"අවාසනාවකට, ශ්‍රී ලංකා වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත."}},"zh":{"name":{"en":"China Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in China Stores.","zh":"很抱歉，中国商店目前不提供化妆品销售。"}},"uz":{"name":{"en":"Uzbekistan Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Uzbekistan Stores.","uz":"Afsuski, hozirda O'zbekiston do'konlarida kosmetika sotilmaydi."}},"mn":{"name":{"en":"Mongolia Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Mongolia Stores.","mn":"Харамсалтай нь, Монголын дэлгүүрүүдэд гоо сайхны бүтээгдэхүүн одоогоор зарагддаггүй."}},"vi":{"name":{"en":"Vietnam Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Vietnam Stores.","vi":"Rất tiếc, mỹ phẩm hiện không có sẵn để bán tại các cửa hàng Việt Nam."}},"th":{"name":{"en":"Thailand Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Thailand Stores.","th":"ขออภัย เครื่องสำอางไม่มีจำหน่ายในร้านค้าไทยในขณะนี้"}},"kk":{"name":{"en":"Kazakhstan Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Kazakhstan Stores.","kk":"Өкінішке орай, Қазақстан дүкендерінде косметика қазір сатылмайды."}},"my":{"name":{"en":"Myanmar Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Myanmar Stores.","my":"ဝမ်းနည်းပါတယ်၊ မြန်မာစတိုးများတွင် အလှကုန်ပစ္စည်းများ လောလောဆယ် ရောင်းချမထားပါ။"}},"ne":{"name":{"en":"Nepal Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Nepal Stores.","ne":"दुर्भाग्यवश, नेपाल पसलहरूमा हाल सौन्दर्य प्रसाधन बिक्रीको लागि उपलब्ध छैन।"}},"ja":{"name":{"en":"Japan Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Japan Stores.","ja":"申し訳ありませんが、日本の店舗では現在化粧品の販売は行っておりません。"}},"km":{"name":{"en":"Cambodia Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Cambodia Stores.","km":"សូមអភ័យទោស គ្រឿងសំអាងមិនមានលក់នៅហាងកម្ពុជាទេនៅពេលនេះ។"}},"id":{"name":{"en":"Indonesia Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Indonesia Stores.","id":"Maaf, kosmetik saat ini tidak tersedia untuk dijual di toko Indonesia."}},"tl":{"name":{"en":"Philippines Stores"},"message":{"en":"Unfortunately, cosmetics are not currently available for sale in Philippines Stores.","tl":"Paumanhin, ang mga cosmetics ay kasalukuyang hindi available para sa pagbebenta sa mga tindahan ng Philippines."}}};
+            return defaults;
+        }
+
+        function switchLang(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.documentElement.lang = lang;
+            updateUILanguage();
+            renderCountries();
+        }
+
+        function updateUILanguage() {
+            const t = translations[currentLang];
+            Object.keys(t).forEach(key => {
+                if (key !== 'stores') {
+                    const el = document.getElementById(key);
+                    if (el) el.textContent = t[key];
+                }
+            });
+        }
+
+        function loadFile() {
+            const f = document.getElementById('fileInput').files[0];
+            if (!f) return alert(translations[currentLang].selectFile);
+            const r = new FileReader();
+            r.onload = (e) => { try { storesData = JSON.parse(e.target.result); renderCountries(); updateStats(); showSuccess(translations[currentLang].loaded); } catch(err) { alert(translations[currentLang].errorLoading + err.message); } };
+            r.readAsText(f);
+        }
+
+        function updateStats() {
+            let links = 0, msgs = 0;
+            Object.values(storesData).forEach(c => { if (c.links) links += c.links.length; if (c.message) msgs++; });
+            document.getElementById('totalLinks').textContent = links;
+            document.getElementById('countriesWithMessages').textContent = msgs;
+        }
+
+        function renderCountries() {
+            const c = document.getElementById('countries-container');
+            const t = translations[currentLang];
+            c.innerHTML = Object.keys(storesData).map(code => {
+                const country = storesData[code];
+                const hasLinks = country.links && country.links.length > 0;
+                const hasMsg = country.message && !hasLinks;
+                const displayName = t.stores[code] || country.name.en;
+                
+                return `<div class="country-card ${hasMsg ? 'has-message' : ''}">
+                    <div class="country-header">
+                        <div><span class="country-name">${displayName}</span><span class="country-code">${code}</span></div>
+                        <div class="btn-group">
+                            <button class="add-link-btn" onclick="addLink('${code}')">${t.addLink}</button>
+                            ${!hasLinks ? `<button class="add-msg-btn" onclick="addMessage('${code}')">${t.addMessage}</button>` : ''}
+                        </div>
+                    </div>
+                    <div class="links-list">${hasLinks ? country.links.map((l, i) => `
+                        <div class="link-item">
+                            <input type="text" placeholder="Store Name" value="${l.name || ''}" onchange="updateLink('${code}', ${i}, 'name', this.value)" style="flex: 1;">
+                            <input type="text" placeholder="https://store.com" value="${l.url || ''}" onchange="updateLink('${code}', ${i}, 'url', this.value)" style="flex: 2;">
+                            <input type="text" placeholder="Logo URL (optional: www.naver.com)" value="${l.logoUrl || ''}" onchange="updateLink('${code}', ${i}, 'logoUrl', this.value)" style="flex: 1.5;">
+                            <button class="delete-btn" onclick="deleteLink('${code}', ${i})">${t.delete}</button>
+                        </div>`).join('') : `<div class="no-links">${t.noLinks}</div>`}</div>
+                    ${hasMsg ? `<div class="message-section">${renderMessageInputs(code)}</div>` : ''}
+                </div>`;
+            }).join('');
+            updateJSON();
+        }
+
+        function renderMessageInputs(code) {
+            const country = storesData[code];
+            if (!country.message) return '';
+            
+            const countryLang = countryLanguages[code];
+            const inputs = [];
+            
+            // Always show English first
+            inputs.push(`<div class="message-row">
+                <div class="lang-label">English</div>
+                <textarea onchange="updateMessage('${code}', 'en', this.value)" oninput="autoTranslate('${code}', this.value)">${country.message.en || ''}</textarea>
+            </div>`);
+            
+            // Show country-specific language
+            if (country.message[countryLang.code]) {
+                inputs.push(`<div class="message-row">
+                    <div class="lang-label">${countryLang.name}</div>
+                    <textarea onchange="updateMessage('${code}', '${countryLang.code}', this.value)">${country.message[countryLang.code] || ''}</textarea>
+                </div>`);
+            }
+            
+            return inputs.join('');
+        }
+
+        function autoTranslate(code, englishText) {
+            // Update English text in real-time
+            if (!storesData[code].message) storesData[code].message = {};
+            storesData[code].message.en = englishText;
+            updateJSON();
+        }
+
+        const defaultMessages = {
+            korean: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Korean Stores.",
+                ko: "죄송합니다. 현재 한국 매장에서는 화장품을 판매하지 않습니다."
+            },
+            en: {
+                en: "Unfortunately, cosmetics are not currently available for sale in UK Stores.",
+                en: "Unfortunately, cosmetics are not currently available for sale in UK Stores."
+            },
+            ru: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Russia Stores.",
+                ru: "К сожалению, в российских магазинах косметика в настоящее время не продается."
+            },
+            si: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Sri Lanka Stores.",
+                si: "අවාසනාවකට, ශ්‍රී ලංකා වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත."
+            },
+            zh: {
+                en: "Unfortunately, cosmetics are not currently available for sale in China Stores.",
+                zh: "很抱歉，中国商店目前不提供化妆品销售。"
+            },
+            uz: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Uzbekistan Stores.",
+                uz: "Afsuski, hozirda O'zbekiston do'konlarida kosmetika sotilmaydi."
+            },
+            mn: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Mongolia Stores.",
+                mn: "Харамсалтай нь, Монголын дэлгүүрүүдэд гоо сайхны бүтээгдэхүүн одоогоор зарагддаггүй."
+            },
+            vi: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Vietnam Stores.",
+                vi: "Rất tiếc, mỹ phẩm hiện không có sẵn để bán tại các cửa hàng Việt Nam."
+            },
+            th: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Thailand Stores.",
+                th: "ขออภัย เครื่องสำอางไม่มีจำหน่ายในร้านค้าไทยในขณะนี้"
+            },
+            kk: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Kazakhstan Stores.",
+                kk: "Өкінішке орай, Қазақстан дүкендерінде косметика қазір сатылмайды."
+            },
+            my: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Myanmar Stores.",
+                my: "ဝမ်းနည်းပါတယ်၊ မြန်မာစတိုးများတွင် အလှကုန်ပစ္စည်းများ လောလောဆယ် ရောင်းချမထားပါ။"
+            },
+            ne: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Nepal Stores.",
+                ne: "दुर्भाग्यवश, नेपाल पसलहरूमा हाल सौन्दर्य प्रसाधन बिक्रीको लागि उपलब्ध छैन।"
+            },
+            ja: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Japan Stores.",
+                ja: "申し訳ありませんが、日本の店舗では現在化粧品の販売は行っておりません。"
+            },
+            km: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Cambodia Stores.",
+                km: "សូមអភ័យទោស គ្រឿងសំអាងមិនមានលក់នៅហាងកម្ពុជាទេនៅពេលនេះ។"
+            },
+            id: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Indonesia Stores.",
+                id: "Maaf, kosmetik saat ini tidak tersedia untuk dijual di toko Indonesia."
+            },
+            tl: {
+                en: "Unfortunately, cosmetics are not currently available for sale in Philippines Stores.",
+                tl: "Paumanhin, ang mga cosmetics ay kasalukuyang hindi available para sa pagbebenta sa mga tindahan ng Philippines."
+            }
+        };
+
+        function addMessage(code) {
+            if (!storesData[code].message) {
+                const countryLang = countryLanguages[code];
+                const defaultMsg = defaultMessages[code] || {
+                    en: `Unfortunately, cosmetics are not currently available for sale in ${translations.en.stores[code]}.`,
+                    [countryLang.code]: ''
+                };
+                storesData[code].message = {
+                    en: defaultMsg.en,
+                    [countryLang.code]: defaultMsg[countryLang.code] || ''
+                };
+            }
+            if (storesData[code].links) delete storesData[code].links;
+            renderCountries();
+            updateStats();
+        }
+
+        function addLink(code) {
+            if (!storesData[code].links) storesData[code].links = [];
+            if (storesData[code].message) delete storesData[code].message;
+            storesData[code].links.push({name: "", url: ""});
+            renderCountries(); updateStats();
+        }
+
+        function updateLink(code, i, field, val) {
+            if (storesData[code].links[i]) storesData[code].links[i][field] = val;
+            updateJSON();
+        }
+
+        function deleteLink(code, i) {
+            if (!confirm('Delete?')) return;
+            storesData[code].links.splice(i, 1);
+            renderCountries(); updateStats();
+        }
+
+        function updateMessage(code, lang, val) {
+            if (!storesData[code].message) storesData[code].message = {};
+            storesData[code].message[lang] = val;
+            updateJSON();
+        }
+
+        function updateJSON() {
+            document.getElementById('json-display').textContent = JSON.stringify(storesData, null, 2);
+        }
+
+        function saveData() {
+            const blob = new Blob([JSON.stringify(storesData, null, 2)], {type: 'application/json'});
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'stores-data.json';
+            a.click();
+            showSuccess(translations[currentLang].downloaded);
+        }
+
+        function copyJSON() {
+            navigator.clipboard.writeText(document.getElementById('json-display').textContent);
+            showSuccess(translations[currentLang].copied);
+        }
+
+        function showSuccess(msg) {
+            const s = document.createElement('div');
+            s.className = 'success';
+            s.textContent = msg;
+            document.querySelector('.container').insertBefore(s, document.querySelector('.container').firstChild);
+            setTimeout(() => s.remove(), 5000);
+        }
+
+        function showTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            if (tab === 'edit') {
+                document.querySelector('.tab:nth-child(1)').classList.add('active');
+                document.getElementById('edit-tab').classList.add('active');
+            } else {
+                document.querySelector('.tab:nth-child(2)').classList.add('active');
+                document.getElementById('json-tab').classList.add('active');
+            }
+        }
+
+        loadInitialData();
+    </script>
+</body>
+</html>
