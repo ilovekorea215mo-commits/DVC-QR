@@ -6,11 +6,13 @@
     "links": [
       {
         "name": "Naver",
-        "url": "https://brand.naver.com/age20s/products/8415518013?n_media=27758&n_query=%EC%84%A0%EB%B0%A4AGE&n_rank=1&n_ad_group=grp-a001-01-000000050448230&n_ad=nad-a001-01-000000486137383&n_campaign_type=1&n_ad_group_type=1&n_match=2&NaPm=ct%3Dmn2x9gxs%7Cci%3DER073db0ac-2692-11f1-bed7-023331a7a652%7Ctr%3Dsa%7Chk%3D87aa5b9061930fe9548fd80bd35db1f8cd97e958%7Cnacn%3DpHO0B0APszKs"
+        "url": "https://brand.naver.com/age20s/products/8415518013?n_media=27758&n_query=%EC%84%A0%EB%B0%A4AGE&n_rank=1&n_ad_group=grp-a001-01-000000050448230&n_ad=nad-a001-01-000000486137383&n_campaign_type=1&n_ad_group_type=1&n_match=2&NaPm=ct%3Dmn2x9gxs%7Cci%3DER073db0ac-2692-11f1-bed7-023331a7a652%7Ctr%3Dsa%7Chk%3D87aa5b9061930fe9548fd80bd35db1f8cd97e958%7Cnacn%3DpHO0B0APszKs",
+        "logoUrl": "www.naver.com"
       },
       {
-        "name": "Coupang",
-        "url": "https://www.coupang.com/vp/products/8286456004?itemId=26570382575&vendorItemId=87552264787&sourceType=srp_product_ads&clickEventId=edd293b0-2691-11f1-9b2c-d8c815ffca1b&korePlacement=15&koreSubPlacement=1&clickEventId=edd293b0-2691-11f1-9b2c-d8c815ffca1b&korePlacement=15&koreSubPlacement=1&traceId=mn2x8qz3"
+        "name": "coupang.",
+        "url": "https://www.coupang.com/vp/products/8286456004?itemId=26570382575&vendorItemId=87552264787&sourceType=srp_product_ads&clickEventId=edd293b0-2691-11f1-9b2c-d8c815ffca1b&korePlacement=15&koreSubPlacement=1&clickEventId=edd293b0-2691-11f1-9b2c-d8c815ffca1b&korePlacement=15&koreSubPlacement=1&traceId=mn2x8qz3",
+        "logoUrl": "www.coupang.com"
       }
     ]
   },
@@ -19,7 +21,7 @@
       "en": "UK Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in UK Stores."
     }
   },
   "ru": {
@@ -27,8 +29,8 @@
       "en": "Russia Stores"
     },
     "message": {
-      "en": "Unfortunately, cosmetics are not currently available for sale in Russian stores.",
-      "ru": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Russia Stores.",
+      "ru": "К сожалению, в российских магазинах косметика в настоящее время не продается."
     }
   },
   "si": {
@@ -36,8 +38,8 @@
       "en": "Sri Lanka Stores"
     },
     "message": {
-      "en": "Unfortunately, cosmetics are not currently available for sale in Sri Lanka stores.",
-      "si": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Sri Lanka Stores.",
+      "si": "අවාසනාවකට, ශ්‍රී ලංකා වෙළඳසැල්වල මේ වන විට ප්‍රසාධන ද්‍රව්‍ය විකිණීමට නොමැත."
     }
   },
   "zh": {
@@ -45,7 +47,8 @@
       "en": "China Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in China Stores.",
+      "zh": "很抱歉，中国商店目前不提供化妆品销售。"
     }
   },
   "uz": {
@@ -53,7 +56,8 @@
       "en": "Uzbekistan Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Uzbekistan Stores.",
+      "uz": "Afsuski, hozirda O'zbekiston do'konlarida kosmetika sotilmaydi."
     }
   },
   "mn": {
@@ -61,7 +65,8 @@
       "en": "Mongolia Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Mongolia Stores.",
+      "mn": "Харамсалтай нь, Монголын дэлгүүрүүдэд гоо сайхны бүтээгдэхүүн одоогоор зарагддаггүй."
     }
   },
   "vi": {
@@ -69,7 +74,8 @@
       "en": "Vietnam Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Vietnam Stores.",
+      "vi": "Rất tiếc, mỹ phẩm hiện không có sẵn để bán tại các cửa hàng Việt Nam."
     }
   },
   "th": {
@@ -77,7 +83,8 @@
       "en": "Thailand Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Thailand Stores.",
+      "th": "ขออภัย เครื่องสำอางไม่มีจำหน่ายในร้านค้าไทยในขณะนี้"
     }
   },
   "kk": {
@@ -85,7 +92,8 @@
       "en": "Kazakhstan Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Kazakhstan Stores.",
+      "kk": "Өкінішке орай, Қазақстан дүкендерінде косметика қазір сатылмайды."
     }
   },
   "my": {
@@ -93,7 +101,8 @@
       "en": "Myanmar Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Myanmar Stores.",
+      "my": "ဝမ်းနည်းပါတယ်၊ မြန်မာစတိုးများတွင် အလှကုန်ပစ္စည်းများ လောလောဆယ် ရောင်းချမထားပါ။"
     }
   },
   "ne": {
@@ -101,7 +110,8 @@
       "en": "Nepal Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Nepal Stores.",
+      "ne": "दुर्भाग्यवश, नेपाल पसलहरूमा हाल सौन्दर्य प्रसाधन बिक्रीको लागि उपलब्ध छैन।"
     }
   },
   "ja": {
@@ -109,7 +119,8 @@
       "en": "Japan Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Japan Stores.",
+      "ja": "申し訳ありませんが、日本の店舗では現在化粧品の販売は行っておりません。"
     }
   },
   "km": {
@@ -117,7 +128,8 @@
       "en": "Cambodia Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Cambodia Stores.",
+      "km": "សូមអភ័យទោស គ្រឿងសំអាងមិនមានលក់នៅហាងកម្ពុជាទេនៅពេលនេះ។"
     }
   },
   "id": {
@@ -125,7 +137,8 @@
       "en": "Indonesia Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Indonesia Stores.",
+      "id": "Maaf, kosmetik saat ini tidak tersedia untuk dijual di toko Indonesia."
     }
   },
   "tl": {
@@ -133,7 +146,8 @@
       "en": "Philippines Stores"
     },
     "message": {
-      "en": ""
+      "en": "Unfortunately, cosmetics are not currently available for sale in Philippines Stores.",
+      "tl": "Paumanhin, ang mga cosmetics ay kasalukuyang hindi available para sa pagbebenta sa mga tindahan ng Philippines."
     }
   }
 }
