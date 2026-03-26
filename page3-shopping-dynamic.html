@@ -435,9 +435,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.25);
             z-index: 0;
         }
 
@@ -448,8 +446,8 @@
         .links-header {
             position: relative;
             z-index: 1;
-            padding: 30px 25px;
-            background: rgba(0, 0, 0, 0.8);
+            padding: 25px 20px;
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(20px);
             color: white;
             display: flex;
@@ -472,6 +470,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .links-back-btn:hover {
@@ -479,13 +478,30 @@
             transform: scale(1.1);
         }
 
-        .links-logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            object-fit: cover;
-            background: white;
-            padding: 5px;
+        .links-title {
+            font-size: 20px;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .links-back-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .links-back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
         }
 
         .links-title {
@@ -541,7 +557,7 @@
         .link-icon {
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -554,7 +570,16 @@
         .link-icon img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            padding: 5px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .link-icon-number {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
         }
 
         .link-text {
@@ -816,7 +841,6 @@
         <div class="links-container">
             <div class="links-header">
                 <button class="links-back-btn" id="linksBackBtn">←</button>
-                <img class="links-logo" id="linksLogo" src="images/vitruvian-logo.png" alt="Store Logo">
                 <h2 class="links-title" id="linksTitle">Korean Stores</h2>
             </div>
             <div class="links-list" id="linksList">
@@ -1077,23 +1101,18 @@
                     throw new Error('Store type not found');
                 }
                 
-                // Update logo if provided (fallback to default)
-                const logoElement = document.getElementById('linksLogo');
-                if (data.logo) {
-                    logoElement.src = data.logo;
-                } else {
-                    logoElement.src = 'images/vitruvian-logo.png';
-                }
-                
                 // Update title
                 linksTitle.textContent = data.name[currentLang] || data.name.en || (storeType === 'korean' ? 'Korean Stores' : `${countryNames[currentLang]} Stores`);
                 
-                // Render links
+                // Render links with improved logo handling
                 if (data.links && data.links.length > 0) {
                     linksList.innerHTML = data.links.map((link, index) => `
                         <a href="${link.url}" target="_blank" class="link-item" style="animation-delay: ${index * 0.1}s">
                             <div class="link-icon">
-                                ${link.logo ? `<img src="${link.logo}" alt="${link.name}">` : `<span style="color: white; font-size: 18px; font-weight: 600;">${index + 1}</span>`}
+                                ${link.logo 
+                                    ? `<img src="${link.logo}" alt="${link.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                       <span class="link-icon-number" style="display: none;">${index + 1}</span>` 
+                                    : `<span class="link-icon-number">${index + 1}</span>`}
                             </div>
                             <div class="link-text">${link.name}</div>
                             <div class="link-arrow">→</div>
