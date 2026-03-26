@@ -1,0 +1,102 @@
+{
+  "korean": {
+    "logo": "images/korean-logo.png",
+    "name": {
+      "en": "Korean Stores",
+      "ko": "한국 스토어",
+      "si": "කොරියානු වෙළඳසැල්",
+      "ru": "Корейские магазины"
+    },
+    "links": [
+      {
+        "name": "Olive Young",
+        "url": "https://www.oliveyoung.com"
+      },
+      {
+        "name": "Innisfree",
+        "url": "https://www.innisfree.com"
+      },
+      {
+        "name": "Etude House",
+        "url": "https://www.etudehouse.com"
+      },
+      {
+        "name": "Laneige",
+        "url": "https://www.laneige.com"
+      },
+      {
+        "name": "Sulwhasoo",
+        "url": "https://www.sulwhasoo.com"
+      }
+    ]
+  },
+  "si": {
+    "logo": "images/srilanka-logo.png",
+    "name": {
+      "en": "Sri Lanka Stores",
+      "ko": "스리랑카 스토어",
+      "si": "ශ්‍රී ලංකාව වෙළඳසැල්",
+      "ru": "Магазины Шри-Ланки"
+    },
+    "links": [
+      {
+        "name": "Keells Super",
+        "url": "https://www.keellssuper.com"
+      },
+      {
+        "name": "Arpico",
+        "url": "https://www.arpico.com"
+      },
+      {
+        "name": "Softlogic",
+        "url": "https://www.softlogic.lk"
+      }
+    ]
+  },
+  "en": {
+    "logo": "images/uk-logo.png",
+    "name": {
+      "en": "UK Stores",
+      "ko": "영국 스토어",
+      "si": "එක්සත් රාජධානිය වෙළඳසැල්",
+      "ru": "Британские магазины"
+    },
+    "links": [
+      {
+        "name": "Boots",
+        "url": "https://www.boots.com"
+      },
+      {
+        "name": "Superdrug",
+        "url": "https://www.superdrug.com"
+      },
+      {
+        "name": "Lookfantastic",
+        "url": "https://www.lookfantastic.com"
+      }
+    ]
+  },
+  "ru": {
+    "logo": "images/russia-logo.png",
+    "name": {
+      "en": "Russia Stores",
+      "ko": "러시아 스토어",
+      "si": "රුසියාව වෙළඳසැල්",
+      "ru": "Россия Магазины"
+    },
+    "links": [
+      {
+        "name": "Л'Этуаль",
+        "url": "https://www.letu.ru"
+      },
+      {
+        "name": "Рив Гош",
+        "url": "https://www.rivegauche.ru"
+      },
+      {
+        "name": "Золотое Яблоко",
+        "url": "https://www.goldapple.ru"
+      }
+    ]
+  }
+}
