@@ -1130,6 +1130,10 @@
                             <div class="link-arrow">→</div>
                         </a>
                     `}).join('');
+                } else if (data.message) {
+                    // Show message in user's language if no links available
+                    const message = data.message[currentLang] || data.message.en || 'No stores available';
+                    linksList.innerHTML = `<div class="error">${message}</div>`;
                 } else {
                     linksList.innerHTML = '<div class="error">No stores available</div>';
                 }
