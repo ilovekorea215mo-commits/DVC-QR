@@ -173,10 +173,6 @@
         }
 
         /* Language Selector - REMOVED */
-        .language-selector {
-            display: none;
-        }
-
         /* Video Popup */
         .video-popup {
             display: none;
@@ -419,13 +415,15 @@
             width: 90%;
             max-width: 450px;
             height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(30px);
-            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(30px) saturate(120%);
+            -webkit-backdrop-filter: blur(30px) saturate(120%);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             transform: translateX(100%);
             transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .links-popup.active .links-container {
@@ -489,19 +487,21 @@
             gap: 15px;
             padding: 15px 20px;
             margin-bottom: 10px;
-            background: white;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
             border-radius: 12px;
             text-decoration: none;
-            color: #333;
+            color: #ffffff;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            border: 2px solid transparent;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .link-item:hover {
             transform: translateX(5px);
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
-            border-color: #667eea;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            border-color: rgba(102, 126, 234, 0.6);
+            background: rgba(102, 126, 234, 0.2);
         }
 
         .link-icon {
@@ -515,6 +515,7 @@
             color: white;
             font-size: 18px;
             flex-shrink: 0;
+            font-weight: 600;
         }
 
         .link-text {
@@ -531,18 +532,19 @@
 
         .link-item:hover .link-arrow {
             transform: translateX(5px);
+            color: #ffffff;
         }
 
         .loading {
             text-align: center;
             padding: 40px;
-            color: #666;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .error {
             text-align: center;
             padding: 40px;
-            color: #f44336;
+            color: #ff6b6b;
         }
 
         /* Back Button */
@@ -637,17 +639,6 @@
                 font-size: 18px;
                 top: 12px;
                 left: 12px;
-            }
-
-            .language-selector {
-                top: 12px;
-                right: 12px;
-            }
-
-            .language-dropdown {
-                font-size: 12px;
-                padding: 8px 12px;
-                padding-right: 30px;
             }
 
             .store-glass-container {
@@ -816,23 +807,93 @@
         const buttonTranslations = {
             howToUse: {
                 en: 'How to use',
-                ko: '사용 방법'
+                ko: '사용 방법',
+                zh: '如何使用',
+                ru: 'Как использовать',
+                uz: 'Foydalanish',
+                si: 'භාවිතා කරන ආකාරය',
+                mn: 'Хэрхэн ашиглах',
+                vi: 'Cách sử dụng',
+                th: 'วิธีใช้',
+                kk: 'Қалай пайдалану',
+                my: 'အသုံးပြုနည်း',
+                ne: 'प्रयोग गर्ने तरिका',
+                ja: '使い方',
+                km: 'របៀបប្រើ',
+                id: 'Cara menggunakan',
+                tl: 'Paano gamitin'
             },
             shoppingMall: {
                 en: 'Shopping mall',
-                ko: '쇼핑몰'
+                ko: '쇼핑몰',
+                zh: '购物中心',
+                ru: 'Торговый центр',
+                uz: 'Savdo markazi',
+                si: 'වෙළඳ සංකීර්ණය',
+                mn: 'Худалдааны төв',
+                vi: 'Trung tâm mua sắm',
+                th: 'ห้างสรรพสินค้า',
+                kk: 'Сауда орталығы',
+                my: 'စျေးဝယ်စင်တာ',
+                ne: 'शपिंग मल',
+                ja: 'ショッピングモール',
+                km: 'មជ្ឈមណ្ឌលទិញទំនិញ',
+                id: 'Mal belanja',
+                tl: 'Shopping mall'
             },
             selectStore: {
                 en: 'Select Stores',
-                ko: '스토어 선택'
+                ko: '스토어 선택',
+                zh: '选择商店',
+                ru: 'Выберите магазины',
+                uz: 'Do\'konlarni tanlang',
+                si: 'වෙළඳසැල් තෝරන්න',
+                mn: 'Дэлгүүрүүд сонгох',
+                vi: 'Chọn các cửa hàng',
+                th: 'เลือกร้านค้า',
+                kk: 'Дүкендерді таңдаңыз',
+                my: 'စတိုးများရွေးချယ်ပါ',
+                ne: 'पसलहरू छान्नुहोस्',
+                ja: 'ストアを選択',
+                km: 'ជ្រើសរើសហាង',
+                id: 'Pilih Toko',
+                tl: 'Pumili ng Tindahan'
             },
             koreanStores: {
                 en: 'Korean Stores',
-                ko: '한국 스토어'
+                ko: '한국 스토어',
+                zh: '韩国商店',
+                ru: 'Корейские магазины',
+                uz: 'Koreya do\'konlari',
+                si: 'කොරියානු වෙළඳසැල්',
+                mn: 'Солонгос дэлгүүрүүд',
+                vi: 'Các cửa hàng Hàn Quốc',
+                th: 'ร้านค้าเกาหลี',
+                kk: 'Корей дүкендері',
+                my: 'ကိုရီးယား စတိုးများ',
+                ne: 'कोरियाली पसलहरू',
+                ja: '韓国ストア',
+                km: 'ហាងកូរ៉េ',
+                id: 'Toko Korea',
+                tl: 'Korean Stores'
             },
             countryStores: {
                 en: '{country} Stores',
-                ko: '{country} 스토어'
+                ko: '{country} 스토어',
+                zh: '{country} 商店',
+                ru: '{country} Магазины',
+                uz: '{country} Do\'konlar',
+                si: '{country} වෙළඳසැල්',
+                mn: '{country} Дэлгүүрүүд',
+                vi: '{country} Các cửa hàng',
+                th: '{country} ร้านค้า',
+                kk: '{country} Дүкендер',
+                my: '{country} စတိုးများ',
+                ne: '{country} पसलहरू',
+                ja: '{country} ストア',
+                km: '{country} ហាង',
+                id: '{country} Toko',
+                tl: '{country} Mga Tindahan'
             }
         };
 
