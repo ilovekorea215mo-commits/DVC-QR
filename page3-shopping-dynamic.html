@@ -637,6 +637,8 @@
             transition: all 0.3s ease;
             text-decoration: none;
             z-index: 100;
+            font-family: inherit;
+            padding: 0;
         }
 
         .back-button:hover {
@@ -777,7 +779,7 @@
 </head>
 <body>
     <!-- Back Button -->
-    <a href="page2-language-selection.html" class="back-button" id="backButton">←</a>
+    <button class="back-button" id="backButton" onclick="goBackWithConfirm()">←</button>
 
     <div class="container">
         <div class="glass-plate">
@@ -1216,6 +1218,14 @@
             id: "Apakah Anda ingin memilih bahasa lain?",
             tl: "Gusto mo bang pumili ng ibang wika?"
         };
+
+        // Function to go back with confirmation
+        function goBackWithConfirm() {
+            const message = confirmMessages[currentLang] || confirmMessages.en;
+            if (confirm(message)) {
+                window.location.href = 'page2-language-selection.html';
+            }
+        }
 
         // Browser back button handling
         window.addEventListener('popstate', (e) => {
