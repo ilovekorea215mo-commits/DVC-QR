@@ -566,6 +566,16 @@
             justify-content: center;
             flex-shrink: 0;
             border: 1px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+        }
+
+        .link-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+            background: white;
+            border-radius: 8px;
         }
 
         .link-icon-number {
@@ -1096,17 +1106,30 @@
                 // Update title
                 linksTitle.textContent = data.name[currentLang] || data.name.en || (storeType === 'korean' ? 'Korean Stores' : `${countryNames[currentLang]} Stores`);
                 
-                // Render links with numbers only (no logos)
+                // Render links with auto-generated logos from Google Favicon API
                 if (data.links && data.links.length > 0) {
-                    linksList.innerHTML = data.links.map((link, index) => `
+                    linksList.innerHTML = data.links.map((link, index) => {
+                        // Extract domain from URL for favicon
+                        let domain = '';
+                        try {
+                            const url = new URL(link.url);
+                            domain = url.hostname;
+                        } catch (e) {
+                            domain = link.url;
+                        }
+                        
+                        // Use provided logo or auto-generate from Google Favicon API
+                        const logoUrl = link.logo || `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+                        
+                        return `
                         <a href="${link.url}" target="_blank" class="link-item" style="animation-delay: ${index * 0.1}s">
                             <div class="link-icon">
-                                <span class="link-icon-number">${index + 1}</span>
+                                <img src="${logoUrl}" alt="${link.name}" onerror="this.parentElement.innerHTML='<span class=\\'link-icon-number\\'>${index + 1}</span>'">
                             </div>
                             <div class="link-text">${link.name}</div>
                             <div class="link-arrow">→</div>
                         </a>
-                    `).join('');
+                    `}).join('');
                 } else {
                     linksList.innerHTML = '<div class="error">No stores available</div>';
                 }
