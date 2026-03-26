@@ -10,23 +10,28 @@
     "links": [
       {
         "name": "Olive Young",
-        "url": "https://www.oliveyoung.com"
+        "url": "https://www.oliveyoung.com",
+        "logo": "https://cdn-icons-png.flaticon.com/128/2234/2234742.png"
       },
       {
         "name": "Innisfree",
-        "url": "https://www.innisfree.com"
+        "url": "https://www.innisfree.com",
+        "logo": "https://cdn-icons-png.flaticon.com/128/3050/3050155.png"
       },
       {
         "name": "Etude House",
-        "url": "https://www.etudehouse.com"
+        "url": "https://www.etudehouse.com",
+        "logo": "https://cdn-icons-png.flaticon.com/128/2548/2548482.png"
       },
       {
         "name": "Laneige",
-        "url": "https://www.laneige.com"
+        "url": "https://www.laneige.com",
+        "logo": "https://cdn-icons-png.flaticon.com/128/2917/2917995.png"
       },
       {
         "name": "Sulwhasoo",
-        "url": "https://www.sulwhasoo.com"
+        "url": "https://www.sulwhasoo.com",
+        "logo": "https://cdn-icons-png.flaticon.com/128/3448/3448636.png"
       }
     ]
   },
