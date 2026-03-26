@@ -8,29 +8,24 @@
     },
     "links": [
       {
-        "name": "Naver",
-        "url": "https://brand.naver.com/age20s/products/8415518013?n_media=27758&n_query=%EC%84%A0%EB%B0%A4AGE&n_rank=1&n_ad_group=grp-a001-01-000000050448230&n_ad=nad-a001-01-000000486137383&n_campaign_type=1&n_ad_group_type=1&n_match=2&NaPm=ct%3Dmn2x9gxs%7Cci%3DER073db0ac-2692-11f1-bed7-023331a7a652%7Ctr%3Dsa%7Chk%3D87aa5b9061930fe9548fd80bd35db1f8cd97e958%7Cnacn%3DpHO0B0APszKs",
-        "logo": "https://www.oliveyoung.com/pc-static-root/image/comm/h1_logo.png"
+        "name": "Olive Young",
+        "url": "https://www.oliveyoung.com"
       },
       {
         "name": "Innisfree",
-        "url": "https://www.innisfree.com",
-        "logo": "https://www.innisfree.com/kr/ko/resources/images/logo.svg"
+        "url": "https://www.innisfree.com"
       },
       {
         "name": "Etude House",
-        "url": "https://www.etudehouse.com",
-        "logo": "https://www.etudehouse.com/images/logo.png"
+        "url": "https://www.etudehouse.com"
       },
       {
         "name": "Laneige",
-        "url": "https://www.laneige.com",
-        "logo": "https://www.laneige.com/sg/en/assets/images/logo.svg"
+        "url": "https://www.laneige.com"
       },
       {
         "name": "Sulwhasoo",
-        "url": "https://www.sulwhasoo.com",
-        "logo": "https://www.sulwhasoo.com/kr/ko/assets/images/logo.svg"
+        "url": "https://www.sulwhasoo.com"
       }
     ]
   },
@@ -44,18 +39,15 @@
     "links": [
       {
         "name": "Keells Super",
-        "url": "https://www.keellssuper.com",
-        "logo": "https://www.keellssuper.com/media/logo/default/keells_logo.png"
+        "url": "https://www.keellssuper.com"
       },
       {
         "name": "Arpico",
-        "url": "https://www.arpico.com",
-        "logo": "https://www.arpico.com/skin/frontend/arpico/default/images/logo.png"
+        "url": "https://www.arpico.com"
       },
       {
         "name": "Softlogic",
-        "url": "https://www.softlogic.lk",
-        "logo": "https://www.softlogic.lk/images/logo.png"
+        "url": "https://www.softlogic.lk"
       }
     ]
   },
@@ -69,18 +61,15 @@
     "links": [
       {
         "name": "Boots",
-        "url": "https://www.boots.com",
-        "logo": "https://www.boots.com/wcsstore/eBootsStorefrontAssetStore/images/Nav-Imagery/boots-logo.svg"
+        "url": "https://www.boots.com"
       },
       {
         "name": "Superdrug",
-        "url": "https://www.superdrug.com",
-        "logo": "https://www.superdrug.com/medias/superdrug-logo.svg"
+        "url": "https://www.superdrug.com"
       },
       {
         "name": "Lookfantastic",
-        "url": "https://www.lookfantastic.com",
-        "logo": "https://www.lookfantastic.com/images/lookfantastic-logo.png"
+        "url": "https://www.lookfantastic.com"
       }
     ]
   },
@@ -94,18 +83,15 @@
     "links": [
       {
         "name": "Л'Этуаль",
-        "url": "https://www.letu.ru",
-        "logo": "https://www.letu.ru/common/img/logo.svg"
+        "url": "https://www.letu.ru"
       },
       {
         "name": "Рив Гош",
-        "url": "https://www.rivegauche.ru",
-        "logo": "https://www.rivegauche.ru/local/templates/rg/assets/img/logo.svg"
+        "url": "https://www.rivegauche.ru"
       },
       {
         "name": "Золотое Яблоко",
-        "url": "https://www.goldapple.ru",
-        "logo": "https://www.goldapple.ru/media/logo.svg"
+        "url": "https://www.goldapple.ru"
       }
     ]
   }
